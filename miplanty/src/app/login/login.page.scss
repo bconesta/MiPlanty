@@ -1,0 +1,78 @@
+.header{
+    width: 100%;
+    height: 15%;
+    background-color: #16a045;
+    position: absolute;
+
+}
+.header2{
+    width: 100%;
+    height: 30%;
+    top: 15%;
+    background-color: black;
+    position: absolute;
+
+}
+.logo{
+    position: relative;
+    height: 50%;
+    margin-top: -2%;
+    text-align: center;
+    img{
+        height: 100%;
+        width: auto;
+    }
+}
+.principal{
+    width: 75%;
+    margin-left: 10%;
+    margin-right: 15%;
+    .inputlogin{
+        margin-left: 50px;
+    }
+    .mail{
+        position: relative;
+       
+        .userIcon{
+            position: absolute;
+            bottom: 3px;
+            left: 0px;
+            color: #16a045;
+        }
+    }
+    .contra{
+        position: relative;
+        #seeIcon{
+            position: absolute;
+            right: 0px;
+            bottom: 3px;
+            z-index: 10;
+        }
+        .inputlogin{
+            margin-left: 50px;
+        }
+        .passIcon{
+            position: absolute;
+            bottom: 3px;
+            left: 0px;
+            color: #16a045;
+        }
+    }
+    
+}
+.boton_centrado{
+    text-align: center;
+    margin-top: 5%;
+    ion-button{
+        width: 50%;
+        margin: 5% 25%;
+    }
+    button{
+        width: 50%;
+        height: 50px;
+        border-radius: 25px;
+        background-color: #16a045;
+        color: white;
+        font-weight: bold;
+    }
+}
