@@ -24,7 +24,7 @@ const firebaseConfig = {
 };
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, BluetoothSerial],
   entryComponents: [],
   imports: [
     BrowserModule,
