@@ -32,46 +32,13 @@ export class LoginPage implements OnInit {
   }
 
   log_in(){
-    /*this.authService.login(this.user, this.password).then(res =>{
+    this.authService.login(this.user, this.password).then(res =>{
       this.router.navigate(['/tabs/tabs/tab1']);
     }).catch(err => alert('Los datos son incorrectos'))
-    */
-    this.bt.isConnected().then(function(){
-      estcon = true;
-    }, function(){estcon=false;});
-
-    if(estcon == false){
-      this.bt.list().then(function(devices){
-        devices.forEach(function(device){
-          if(device.name == "ESP32prueba"){
-            idbt = device.id;
-          }
-        })
-      });
-      if(idbt != "nada"){
-        this.bt.connect(idbt);
-      }
+    
     }
-    else{
-      this.bt.available().then(function (num){
-         hay = num;  
-      }, function(){
-        console.log("Error en la conexión")
-      });
-      
-      
-      if(hay > 0){
-        this.bt.read().then(function (data){
-          document.getElementById('texto').innerHTML = data;
-        }, function(){console.log("Error");});
-      }
-    }
-    
-
-    
-
-    
-
+    forpass(){
+      this.router.navigate(['/forgotten-password']);
     }
 
   ngOnInit() {
