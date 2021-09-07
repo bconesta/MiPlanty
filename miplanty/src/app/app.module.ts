@@ -24,7 +24,7 @@ const firebaseConfig = {
 };
 
 @NgModule({
-  declarations: [AppComponent, BluetoothSerial],
+  declarations: [AppComponent],
   entryComponents: [],
   imports: [
     BrowserModule,
@@ -32,10 +32,9 @@ const firebaseConfig = {
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
-    AngularFireDatabaseModule,
-    BluetoothSerial  
+    AngularFireDatabaseModule
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
-  bootstrap: [AppComponent],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, BluetoothSerial],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}
