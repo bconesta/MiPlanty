@@ -1,6 +1,6 @@
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { Injectable } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFireAuth, PERSISTENCE } from '@angular/fire/compat/auth';
 import * as firebase from 'firebase/app';
 import { first } from 'rxjs/operators';
 
@@ -14,8 +14,18 @@ export class AuthService {
     })
   }
 
-  login(email:string, password:string){
+  /*login(email:string, password:string){
     return this.AFauth.signInWithEmailAndPassword(email, password);
+  }
+  login(email:string, password:string): Promise<firebase.auth.UserCredential> {
+    return this.AFauth.setPersistence(firebase.auth.Auth.Persistence.LOCAL).then(() => {
+      return this.AFauth.signInWithEmailAndPassword(email, password);
+    })
+  }*/
+  login(email: string, password: string) {
+    return this.AFauth.setPersistence('local').then(() => {
+      return this.AFauth.signInWithEmailAndPassword(email, password);
+    });
   }
 
   logout(){
@@ -25,8 +35,15 @@ export class AuthService {
       }).catch(err => rejected(err))
     });
   }
-  /*
-  getUser(): Promise<firebase.auth.User> {
-    return this.AFauth.authState.pipe(first()).toPromise();
-  } */
+  getUser(){
+    return new Promise((resolve,rejected) =>{
+      if(this.AFauth.currentUser){
+        resolve(this.AFauth.currentUser);
+      }
+      else{
+        rejected();
+      }
+    });
+  }
+  
 }

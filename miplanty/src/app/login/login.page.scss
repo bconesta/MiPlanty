@@ -25,37 +25,37 @@
 }
 .principal{
     width: 75%;
-    margin-left: 10%;
-    margin-right: 15%;
-    .inputlogin{
-        margin-left: 50px;
+    margin: -5% 15% 0px;
+    .mailicon{
+        display: inline-block !important;
+        margin-bottom: 5px;
+        color: #16a045;
+        //width: 20%;
+        height: 25px;
+        width: 25px;
     }
     .mail{
-        position: relative;
-       
-        .userIcon{
-            position: absolute;
-            bottom: 3px;
-            left: 0px;
-            color: #16a045;
-        }
+        //position: relative;
+        display: inline-block !important;
+        width: 85%;
+    }
+    .passIcon{
+        display: inline-block !important;
+        margin-bottom: 5px;
+        color: #16a045;
+        //width: 20%;
+        height: 25px;
+        width: 25px;
     }
     .contra{
         position: relative;
+        display: inline-block !important;
+        width: 85%;
         #seeIcon{
             position: absolute;
             right: 0px;
             bottom: 3px;
             z-index: 10;
-        }
-        .inputlogin{
-            margin-left: 50px;
-        }
-        .passIcon{
-            position: absolute;
-            bottom: 3px;
-            left: 0px;
-            color: #16a045;
         }
     }
     

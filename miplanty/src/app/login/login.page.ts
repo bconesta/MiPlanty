@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../servicios/auth.service'
 import { Router } from '@angular/router'
 import { BluetoothSerial } from '@ionic-native/bluetooth-serial/ngx';
-var idbt = "nada";
-var estcon = false;
-var hay = 0;
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -14,7 +12,9 @@ export class LoginPage implements OnInit {
   
   user : string;
   password : string;
-  constructor(private authService : AuthService, public router : Router, private bt : BluetoothSerial) { }
+  constructor(private authService : AuthService, public router : Router, private bt : BluetoothSerial) { 
+    if(this.authService.getUser()){console.log(this.authService.getUser())}
+  }
 
   showPass(){
     console.log(this.user);
