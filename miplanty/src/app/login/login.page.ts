@@ -33,7 +33,7 @@ export class LoginPage implements OnInit {
 
   log_in(){
     this.authService.login(this.user, this.password).then(res =>{
-      this.router.navigate(['/tabs/tabs/tab1']);
+      this.router.navigate(['/tabs/tabs/home']);
     }).catch(err => alert('Los datos son incorrectos'))
     
     }
