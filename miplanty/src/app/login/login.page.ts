@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../servicios/auth.service'
 import { Router } from '@angular/router'
+import { BluetoothSerial } from '@ionic-native/bluetooth-serial/ngx';
 
 @Component({
   selector: 'app-login',
@@ -8,9 +9,12 @@ import { Router } from '@angular/router'
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  
   user : string;
   password : string;
-  constructor(private authService : AuthService, public router : Router) { }
+  constructor(private authService : AuthService, public router : Router, private bt : BluetoothSerial) { 
+    if(this.authService.getUser()){console.log(this.authService.getUser())}
+  }
 
   showPass(){
     console.log(this.user);
@@ -31,7 +35,11 @@ export class LoginPage implements OnInit {
     this.authService.login(this.user, this.password).then(res =>{
       this.router.navigate(['/tabs/tabs/home']);
     }).catch(err => alert('Los datos son incorrectos'))
-  }
+    
+    }
+    forpass(){
+      this.router.navigate(['/forgotten-password']);
+    }
 
   ngOnInit() {
   }

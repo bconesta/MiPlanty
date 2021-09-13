@@ -6,29 +6,38 @@
 </ion-header>
 -->
 
-<ion-content>
+<ion-content color="light">
   <div class="header"></div>
-  <div class="header2"></div>
+  <!--<div class="header2"></div>-->
   <div class="logo">
     <img src="../../assets/imgs/logo_sinfondo.png" alt="logo_miplanty">
   </div>
   <div class="principal">
-    <ion-item class="mail">
+    <!--<ion-item class="mailicon" color="light">
       <ion-icon name="person" class="userIcon"></ion-icon>
+    </ion-item>-->
+    <ion-icon name="person" class="mailicon"></ion-icon>
+    <ion-item class="mail" color="light">
       <ion-label class="inputlogin"  position="floating">Usuario</ion-label>
       <ion-input class="inputlogin" [(ngModel)]=user></ion-input>
-      
     </ion-item>
-    <ion-item class="contra">
+
+    <ion-icon name="lock-closed" class="passIcon"></ion-icon>
+    <ion-item class="contra" color="light">
       <ion-label class="inputlogin" position="floating">Contraseña</ion-label>
       <ion-input class="inputlogin" [(ngModel)]=password id="passId" type="password"></ion-input>
       <ion-icon id="seeIcon" name="eye-outline" (click)="showPass()"></ion-icon>
-      <ion-icon name="lock-closed" class="passIcon"></ion-icon>
     </ion-item>
     
   </div>
   <div class="boton_centrado">
     <button class="ingresar-b"(click)="log_in()">INGRESAR</button>
+    <a (click)="forpass()">¿Olvidaste tu contraseña?</a>
+    <a>Registrarse</a>
   </div>
-
+  <!--<div style="text-align: center;">
+    <h1 id="texto">HOLA</h1>
+  </div>
+-->
+  <div class="footer"></div>
 </ion-content>
