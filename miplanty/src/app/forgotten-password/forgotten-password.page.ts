@@ -7,7 +7,7 @@ import { Router } from '@angular/router'
   styleUrls: ['./forgotten-password.page.scss'],
 })
 export class ForgottenPasswordPage implements OnInit {
-
+  mail : string;
   constructor(public router : Router) { }
   back(){
     this.router.navigate(['/login']);
