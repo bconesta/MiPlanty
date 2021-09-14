@@ -1,12 +1,39 @@
-ion-toolbar {
+.toolbar-home {
     --background:rgb(168, 192, 223);
+    height: 60px;
+    position: relative;
   }
+
+.toolbar-salir{
+    position: absolute;
+    left: 2%;
+    top:25%;
+    ion-button{
+        font-size: larger;
+        font-weight:500;
+    }
+}
+
+.toolbar-logo{
+    position: absolute;
+    top:20%;
+}
+
+.toolbar-mas{
+    position: absolute;
+    right: 2%;
+    top:25%;
+    ion-button{
+        font-size: larger;
+        font-weight: bold;
+    }
+}
 
 ion-icon{
     color:black;
   }
 
-.superior{
+.superior-home{
     position: relative;
     height: 50%;
     text-align: center;
@@ -22,13 +49,18 @@ ion-icon{
 .boton-i{
     position: absolute;
     top:40%;
-    left: 10%;
+    left: 0;
 }
 
 .boton-d{
     position: absolute;
     top:40%;
-    right: 10%;
+    right: 0;
+}
+
+.flechas-home{
+    color:blue;
+    font-size: 80px;
 }
 
 .inferior{
