@@ -35,6 +35,13 @@ export class AuthService {
       }).catch(err => rejected(err))
     });
   }
+  mailRecovery(mail : string){
+    return new Promise((resolve, rejected) =>{
+      this.AFauth.sendPasswordResetEmail(mail).then(res =>{
+        resolve(res);
+      }).catch(err => rejected(err))
+    });
+  }
   getUser(){
     return new Promise((resolve,rejected) =>{
       if(this.AFauth.currentUser){
