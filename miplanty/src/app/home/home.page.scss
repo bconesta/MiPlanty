@@ -1,5 +1,5 @@
 .toolbar-home {
-    --background:rgb(168, 192, 223);
+    --background:rgb(22, 160, 69);
     height: 60px;
     position: relative;
   }
@@ -40,29 +40,86 @@ ion-icon{
     img{
         height: 60%;
         width: auto;
-        margin-top: 10%;
-        border:2px solid transparent;
+        margin-top: 8%;
+        border:1px solid rgb(180, 180, 180);
         border-radius: 60%;
     }
 }
 
 .boton-i{
     position: absolute;
-    top:40%;
+    top:32%;
     left: 0;
 }
 
 .boton-d{
     position: absolute;
-    top:40%;
+    top:32%;
     right: 0;
 }
 
 .flechas-home{
-    color:blue;
+    color:rgb(22, 160, 69);
     font-size: 80px;
+}
+
+.nombre-planta{
+    font-size: 20px;
+    font-weight:bold;
 }
 
 .inferior{
     height: 50%;
+}
+
+.barra-home{
+    position: absolute;
+    left:10%;
+    top:45%;
+    height: 10px;
+    width: 60%;
+}
+
+.numero-barra{
+    position: absolute;
+    right:10%;
+    font-size: 25px;
+    top:35%;
+    margin: 0;
+}
+
+.agua-barra{
+    position:relative;
+    height: 33%;
+    ion-icon{
+        position:absolute;
+        left:45%;
+        bottom: 60%;
+        height: 45px;
+        width: 45px;
+    }
+}
+
+.luz-barra{
+    position:relative;
+    height: 33%;
+    ion-icon{
+        position:absolute;
+        left:45%;
+        bottom: 60%;
+        height: 45px;
+        width: 45px;
+    }
+}
+
+.temp-barra{
+    position:relative;
+    height: 33%;
+    ion-icon{
+        position:absolute;
+        left:45%;
+        bottom: 60%;
+        height: 45px;
+        width: 45px;
+    }
 }

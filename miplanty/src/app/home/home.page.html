@@ -1,11 +1,11 @@
 <ion-header>
   <ion-toolbar class="toolbar-home">
     <ion-buttons slot="start" class="toolbar-salir">
-      <ion-button color="dark" (click)="back()">Salir</ion-button>
+      <ion-button color="light" (click)="back()">Salir</ion-button>
     </ion-buttons>
     <ion-title class="toolbar-logo"><img style="height: 40px;" alt="logo" src="assets/imgs/logo_sinfondo.png"></ion-title>
     <ion-buttons slot="end" class="toolbar-mas"> 
-      <ion-button (click)="back()"><ion-icon name="add-outline"></ion-icon></ion-button>
+      <ion-button (click)="back()"><ion-icon color="light" name="add-outline"></ion-icon></ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -19,16 +19,23 @@
     <ion-button class="boton-d" fill="clear">
       <ion-icon name="caret-forward" class="flechas-home"></ion-icon>
     </ion-button>
+    <p class="nombre-planta">NOMBRE</p>
   </div>
   <div class="inferior">
-    <div>
-      <ion-progress-bar color="secondary" value="0.5"></ion-progress-bar>
+    <div class="agua-barra">
+      <ion-icon name="water" color="secondary"></ion-icon>
+      <ion-progress-bar class="barra-home" color="secondary" value="0.5"></ion-progress-bar>
+      <p class="numero-barra">50%</p>
     </div>
-    <div>
-      <ion-progress-bar color="warning" value="0.8"></ion-progress-bar>
+    <div class="luz-barra">
+      <ion-icon name="sunny" color="warning"></ion-icon>
+      <ion-progress-bar class="barra-home" color="warning" value="0.8"></ion-progress-bar>
+      <p class="numero-barra">80%</p>
     </div>
-    <div>
-      <ion-progress-bar color="danger" value="0.2"></ion-progress-bar>
+    <div class="temp-barra">
+      <ion-icon name="thermometer" color="danger"></ion-icon>
+      <ion-progress-bar class="barra-home" color="danger" value="0.2"></ion-progress-bar>
+      <p class="numero-barra">20%</p>
     </div>
   </div>
 </ion-content>
