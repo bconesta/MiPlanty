@@ -12,11 +12,11 @@
 
 <ion-content>
   <div class="superior-home">
-    <ion-button class="boton-i" fill="clear">
+    <ion-button class="boton-i" fill="clear" (click)="changeImgI()">
       <ion-icon name="caret-back" class="flechas-home"></ion-icon>
     </ion-button>
-    <img src="../../assets/imgs/planta.png" alt="planta">
-    <ion-button class="boton-d" fill="clear">
+    <img [src]="imgcentro" alt="planta">
+    <ion-button class="boton-d" fill="clear" (click)="changeImgD()">
       <ion-icon name="caret-forward" class="flechas-home"></ion-icon>
     </ion-button>
     <p class="nombre-planta">NOMBRE</p>
