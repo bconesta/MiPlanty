@@ -11,7 +11,7 @@ export class HomePage implements OnInit {
 
   constructor(private authService : AuthService, public router : Router) { }
   public imgcentro = '../../assets/imgs/phomeCENTRAL.png'
-
+  public textplanta = "PLANTA";
   back(){
     this.router.navigate(['/'])
   }
@@ -24,18 +24,22 @@ export class HomePage implements OnInit {
     if(this.imgcentro=='../../assets/imgs/phomeCENTRAL.png')
     {
       this.imgcentro='../../assets/imgs/phomeCACTUS.png';
+      this.textplanta = 'CACTUS';
     }
     else if (this.imgcentro=='../../assets/imgs/phomeCACTUS.png')
     {
       this.imgcentro='../../assets/imgs/phomeLUZ.png';
+      this.textplanta='DE LUZ';
     }
     else if (this.imgcentro=='../../assets/imgs/phomeLUZ.png')
     {
       this.imgcentro='../../assets/imgs/phomeSOMBRA.png';
+      this.textplanta='DE SOMBRA';
     }
     else 
     {
       this.imgcentro='../../assets/imgs/phomeCENTRAL.png';
+      this.textplanta='PLANTA';
     }
   }
 
