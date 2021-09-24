@@ -47,18 +47,22 @@ export class HomePage implements OnInit {
     if(this.imgcentro=='../../assets/imgs/phomeCENTRAL.png')
     {
       this.imgcentro='../../assets/imgs/phomeSOMBRA.png';
+      this.textplanta='DE SOMBRA';
     }
     else if (this.imgcentro=='../../assets/imgs/phomeSOMBRA.png')
     {
       this.imgcentro='../../assets/imgs/phomeLUZ.png';
+      this.textplanta='DE LUZ';
     }
     else if (this.imgcentro=='../../assets/imgs/phomeLUZ.png')
     {
       this.imgcentro='../../assets/imgs/phomeCACTUS.png';
+      this.textplanta = 'CACTUS';
     }
     else 
     {
       this.imgcentro='../../assets/imgs/phomeCENTRAL.png';
+      this.textplanta='PLANTA';
     }
   }
   
