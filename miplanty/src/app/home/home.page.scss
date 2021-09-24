@@ -9,7 +9,8 @@
     left: 2%;
     top:25%;
     ion-button{
-        font-size: larger;
+        font-size: 20px;
+        font-family:monospace;
         font-weight:500;
     }
 }
@@ -64,8 +65,10 @@ ion-icon{
 }
 
 .nombre-planta{
-    font-size: 20px;
+    margin:15px 0px 25px 0px;
+    font-size: 30px;
     font-weight:bold;
+    font-family:monospace;
 }
 
 .inferior{
