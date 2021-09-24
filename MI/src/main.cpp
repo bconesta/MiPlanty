@@ -23,10 +23,11 @@ BluetoothSerial SerialBT;
 #define EEPROM_SIZE 12
 String SSID = "-";
 String PASS = "-";
+String inst = "-";
 int address = 0;
 int lecturat, lecturah, lectural = 0;
 float voltaje, grados = 0;
-bool btEn = false;
+bool btEn, instChanged, SSID_select, PASS_select = false;
 
 void setup() {
   Serial.begin(115200);
@@ -66,9 +67,17 @@ void loop() {
     case UNCON:
       //EN CASO DE QUE EL WIFI NO ESTE CONECTADO
       if(!btEn){SerialBT.begin("MiPlanty"); btEn=true;}
+      
       if(SerialBT.available()){
-        SerialBT.readString();
+        inst = SerialBT.readString();
+        instChanged = true;
       }
+
+      if(inst == "SSID" && instChanged == true) SSID_select=true;
+      else if(inst == "PASS" && instChanged == true) PASS_select=true;
+
+
+      instChanged = false;
     break;
     
     case CON_FIREUNCON:
