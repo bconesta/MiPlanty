@@ -11,7 +11,7 @@ export class ForgottenPasswordPage implements OnInit {
   mail : string;
   constructor(public router : Router, private authService : AuthService) { }
   back(){
-    this.router.navigate(['/login']);
+    this.router.navigate(['/']);
   }
   fp_send(){
     this.authService.mailRecovery(this.mail).then(res =>{

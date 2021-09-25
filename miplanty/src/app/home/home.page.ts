@@ -13,7 +13,10 @@ export class HomePage implements OnInit {
   public imgcentro = '../../assets/imgs/phomeCENTRAL.png'
   public textplanta = "PLANTA";
   back(){
-    this.router.navigate(['/'])
+    this.authService.logout().then(res =>{
+      this.router.navigate(['/']);
+    }).catch(err => alert('Los datos son incorrectos'))
+
   }
 
   new(){
