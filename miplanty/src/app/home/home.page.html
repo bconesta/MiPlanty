@@ -1,17 +1,45 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-button (click)="back()">Salir</ion-button>
+  <ion-toolbar class="toolbar-home">
+    <ion-buttons slot="start" class="salir-home">
+      <ion-button (click)="back()" color="light">SALIR</ion-button>
     </ion-buttons>
-    <ion-title>MiPlanty</ion-title>
-    <ion-buttons slot="end">
-      <ion-button (click)="back()"><ion-icon name="add-outline"></ion-icon></ion-button>
+    <ion-title class="toolbar-logo"><img style="height: 40px;" alt="logo" src="assets/imgs/logo_sinfondo.png"></ion-title>
+    <ion-buttons slot="end" class="toolbar-mas"> 
+      <ion-button (click)="new()"><ion-icon color="light" name="add-outline"></ion-icon></ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <div class="superior-home">
+    <ion-button class="boton-i" fill="clear" (click)="changeImgI()">
+      <ion-icon name="caret-back" class="flechas-home"></ion-icon>
+    </ion-button>
+    <img [src]="imgcentro" alt="planta">
+    <ion-button class="boton-d" fill="clear" (click)="changeImgD()">
+      <ion-icon name="caret-forward" class="flechas-home"></ion-icon>
+    </ion-button>
+    <p class="nombre-planta">
+      <label> {{textplanta}}</label>
+    </p>
+  </div>
+  <div class="inferior">
+    <div class="agua-barra">
+      <ion-icon name="water" color="secondary"></ion-icon>
+      <ion-progress-bar class="barra-home" color="secondary" value="0.5"></ion-progress-bar>
+      <p class="numero-barra">50%</p>
+    </div>
+    <div class="luz-barra">
+      <ion-icon name="sunny" color="warning"></ion-icon>
+      <ion-progress-bar class="barra-home" color="warning" value="0.8"></ion-progress-bar>
+      <p class="numero-barra">80%</p>
+    </div>
+    <div class="temp-barra">
+      <ion-icon name="thermometer" color="danger"></ion-icon>
+      <ion-progress-bar class="barra-home" color="danger" value="0.2"></ion-progress-bar>
+      <p class="numero-barra">20%</p>
+    </div>
+  </div>
 </ion-content>
 
 <ion-footer>

@@ -10,3 +10,8 @@ export class TabsPage {
   constructor() {}
 
 }
+/*
+change_color(){
+  ...
+}
+*/
