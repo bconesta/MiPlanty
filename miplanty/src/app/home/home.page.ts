@@ -20,7 +20,7 @@ export class HomePage implements OnInit {
   }
 
   new(){
-    this.router.navigate(['/tabs/tabs/tab2'])
+    this.router.navigate(['/add/type'])
   }
 
   changeImgD(){
