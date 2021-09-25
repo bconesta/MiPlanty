@@ -14,7 +14,11 @@ int estado = 0;
 
 //OBJETOS
 BluetoothSerial SerialBT;
+FirebaseData fbdo;
 
+//Firebase
+#define DB_URL "https://mi-planty-default-rtdb.firebaseio.com/"
+#define DB_SECRET "JLj6uChymQPXqQJQ105kRT4rNI3HXYqxrOnIO7Mv"
 
 #define sensortemp 5
 #define sensorhum 8
@@ -23,10 +27,11 @@ BluetoothSerial SerialBT;
 #define EEPROM_SIZE 12
 String SSID = "-";
 String PASS = "-";
+String ruta_fire = "-";
 String inst = "-";
+
 int address = 0;
-int lecturat, lecturah, lectural = 0;
-float voltaje, grados = 0;
+float temp, hum, luz = 0.0;
 bool btEn, instChanged, SSID_select, PASS_select, SSID_changed, PASS_changed = false;
 
 void setup() {
@@ -55,11 +60,18 @@ void setup() {
       Serial.print(".");
       if(millis()-aux > 60000) break;
     }
-    if(WiFi.status() == WL_CONNECTED) estado=CON_FIREUNCON;
-    else estado=UNCON;
+    
+    if(WiFi.status() != WL_CONNECTED) estado=UNCON;
+    else if(EEPROM.readString(address) == "-") estado=CON_FIREUNCON;
+    else{
+      estado=CON_FIRECON; 
+      ruta_fire = EEPROM.readString(address);
+      Firebase.begin(DB_URL, DB_SECRET);
+      Firebase.reconnectWiFi(true);
+    }
   }
   else estado=UNCON;
-
+  
 }
 
 void loop() {
@@ -99,40 +111,48 @@ void loop() {
 
       //CONDICION CAMBIO DE ESTADO
       if(WiFi.status() == WL_CONNECTED){
-        SerialBT.print("Conectado");
+        SerialBT.print("Conectando");
+        address = 0;
+        EEPROM.writeString(address, SSID);
+        address += sizeof(SSID);
+        EEPROM.writeString(address, PASS);
+        address += sizeof(PASS);
         estado=CON_FIREUNCON;
-        SerialBT.end();
-        btEn = false;
+        SerialBT.print("Conectado");
       }
     break;
     
     case CON_FIREUNCON:
-    
+      if(SerialBT.available()){
+        ruta_fire = SerialBT.readString(); 
+        EEPROM.writeString(address, ruta_fire);
+        estado = CON_FIRECON;
+        Firebase.begin(DB_URL, DB_SECRET);
+        Firebase.reconnectWiFi(true);
+        SerialBT.end();
+        btEn = false;
+      }
     break;
 
     case CON_FIRECON:
+      String ruta_temp = "/Users/" + ruta_fire + "/temp";
+      String ruta_hum = "/Users/" + ruta_fire + "/hum";
+      String ruta_luz = "/Users/" + ruta_fire + "/luz";
 
+      //LECTURA TEMPERATURA
+      temp = (analogRead(sensortemp)*5000/4096) * 10.00; 
+
+      //LECTURA HUMEDAD
+      hum = (analogRead(sensorhum)/4096.0) * 100.0;
+
+      //LECTURA LUZ
+      luz = (analogRead(sensorluz)/4096.0) * 100.0;
+
+      //SUBIR DATOS A FIREBASE
+      Firebase.setFloat(fbdo, ruta_temp, temp);
+      Firebase.setFloat(fbdo, ruta_hum, hum);
+      Firebase.setFloat(fbdo, ruta_luz, luz);
     break;
   }
 
-
-
-
-  //temperatura
- /* lecturat = analogRead(sensortemp);
-  voltaje = (lecturat*5)/1024;
-  grados = voltaje * 100.00;
-
-  //humedad
-  //0 en el agua, 1023 en seco
-  lecturah = analogRead (sensorhum);
-
-  //luz
-  lectural = analogRead (sensorluz);
-
-  //impresiones
-  Serial.print (grados);
-  Serial.print (lecturah);
-  Serial.print (lectural);
-*/
 }
