@@ -119,7 +119,7 @@ void loop() {
 
 
   //temperatura
-  lecturat = analogRead(sensortemp);
+ /* lecturat = analogRead(sensortemp);
   voltaje = (lecturat*5)/1024;
   grados = voltaje * 100.00;
 
@@ -134,4 +134,5 @@ void loop() {
   Serial.print (grados);
   Serial.print (lecturah);
   Serial.print (lectural);
+*/
 }
