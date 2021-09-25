@@ -1,4 +1,4 @@
-/*import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import {
   CanActivate,
   ActivatedRouteSnapshot,
@@ -36,4 +36,4 @@ export class AuthGuard implements CanActivate {
       }
     });
   }
-}*/
+}
