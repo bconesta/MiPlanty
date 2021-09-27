@@ -1,9 +1,49 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>connection</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()"><ion-icon name="arrow-back-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>Conectar planta</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="lol()"><ion-icon name="close-outline"></ion-icon></ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <div class="texto" id="textoo">
+    <h1 style="text-align: center;">¡Genial!</h1>
+    <h4 style="text-align: center;">
+      Es hora de conectarnos con tu nueva Planty. <br> <br>
+      Para esto, debes emparejarte mediante Bluetooth.    
+    </h4>
+    <button (click)="opbt()">Emparejar</button>
+    <h4 style="text-align: center;">Si ya lo estas, toca el boton "Siguiente".</h4>
+  </div>
 
+
+  <div class="boton_centrado">
+    <button class="ingresar-b" (click)="next()">Siguiente</button>
+  </div>
+  
+  <div id="seg" style="display: none;">
+    <ion-item class="nombre">
+      <ion-label position="floating">SSID</ion-label>
+      <ion-input [(ngModel)]="ssid"></ion-input>
+    </ion-item>
+    <div class="boton_centrado">
+      <button class="ingresar-b" (click)="sendSSID()">Enviar SSID</button>
+    </div>
+  </div>
+
+  <div id="ter" style="display: none;">
+    <ion-item class="nombre">
+      <ion-label position="floating">PASS</ion-label>
+      <ion-input [(ngModel)]="pass"></ion-input>
+    </ion-item>
+    <div class="boton_centrado">
+      <button class="ingresar-b" (click)="sendPASS()">Enviar PASS</button>
+    </div>
+  </div>
+  
 </ion-content>

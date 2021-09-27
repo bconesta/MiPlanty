@@ -8,13 +8,14 @@
 </ion-header>
 
 <ion-content>
-  <ion-item>
+  
+  <ion-item class="nombre">
     <ion-label position="floating">Nombre de la planta</ion-label>
-    <ion-input></ion-input>
+    <ion-input [(ngModel)]="name"></ion-input>
   </ion-item>
   <ion-item class="tipo">
     <ion-label position="floating">Tipo de planta</ion-label>
-    <ion-input value="" readonly></ion-input>
+    <ion-input id="planttype" value="" readonly></ion-input>
     <button (click)="presentModal()">Seleccionar</button>
   </ion-item>
 

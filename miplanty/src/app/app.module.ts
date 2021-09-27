@@ -13,6 +13,7 @@ import { AngularFireAuthModule, PERSISTENCE } from '@angular/fire/compat/auth';
 import { BluetoothSerial } from '@ionic-native/bluetooth-serial/ngx';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { OpenNativeSettings } from '@ionic-native/open-native-settings/ngx';
 
 
 const firebaseConfig = {
@@ -42,7 +43,7 @@ const firebaseConfig = {
       registrationStrategy: 'registerWhenStable:30000'
     })
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, BluetoothSerial, { provide: PERSISTENCE, useValue: 'local' }],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, BluetoothSerial, { provide: PERSISTENCE, useValue: 'local' }, OpenNativeSettings],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

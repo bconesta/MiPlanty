@@ -9,11 +9,23 @@ import { ModalController } from '@ionic/angular';
 export class OptionsPage implements OnInit {
 
   constructor(public modalController : ModalController) { }
+  selectCactus(){
+    this.modalController.dismiss({
+      'dismissed': true,
+      'type' : "Cactus"
+    });
+  }
+  selectCustom(){
+    this.modalController.dismiss({
+      'dismissed': true,
+      'type' : "Custom"
+    });
+  }
   dismiss() {
     // using the injected ModalController this page
     // can "dismiss" itself and optionally pass back data
     this.modalController.dismiss({
-      'dismissed': true
+      'dismissed': true,
     });
   }
   ngOnInit() {
