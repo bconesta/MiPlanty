@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar class="toolbar-settings">
-    <ion-button slot="start"  color="clear">
+    <ion-button slot="start"  color="clear" class="boton-settings">
       <ion-icon name="arrow-back-outline" class="salir-settings"></ion-icon>
     </ion-button>
     <ion-title class="titulo-settings">CONFIGURACIÓN</ion-title>
@@ -11,60 +11,59 @@
 <div class="general-settings">
   <h2 class="subtitulo-settings">AJUSTES GENERALES</h2> 
   <ion-list>
-    <ion-item href="" class="item-settings">
-      <ion-label>
-        <ion-icon name="globe-outline" class="icon-settings"></ion-icon> Idioma 
-      </ion-label>
+    <ion-item class="item-settings">
+      <ion-icon name="globe-outline" class="icon-settings"></ion-icon> 
+      <ion-label>Idioma</ion-label>
+      <ion-select placeholder="Seleccione idioma" interface="popover" class="custom-options">
+        <ion-select-option value="español">Español</ion-select-option>
+        <ion-select-option value="ingles">English</ion-select-option>
+      </ion-select>
     </ion-item>
-    <ion-item href="" class="item-settings">
-      <ion-label>
-        <ion-icon name="lock-closed-outline" class="icon-settings"></ion-icon> Acceso
-      </ion-label>
+    <ion-item class="item-settings">
+      <ion-icon name="lock-closed-outline" class="icon-settings"></ion-icon> 
+      <ion-label>Acceso</ion-label>
     </ion-item>
-    <ion-item href="" class="item-settings">
-      <ion-label>
-        <ion-icon name="trash-outline" class="icon-settings"></ion-icon> Borrar
-      </ion-label>
+    <ion-item class="item-settings">
+      <ion-icon name="trash-outline" class="icon-settings"></ion-icon>
+      <ion-label>Borrar</ion-label>
     </ion-item>
-    <ion-item href="" class="item-settings">
-      <ion-label>
-        <ion-icon name="notifications-outline" class="icon-settings"></ion-icon> Notificaciones
-      </ion-label>
+    <ion-item class="item-settings">
+      <ion-icon name="notifications-outline" class="icon-settings"></ion-icon>
+      <ion-label>Notificaciones</ion-label>
     </ion-item>
   </ion-list>
 </div>
 <div class="ayuda-settings">
   <h2 class="subtitulo2-settings">AYUDA</h2> 
   <ion-list>
-    <ion-item href="" class="item-settings">
-      <ion-label>
-        <ion-icon name="help-circle-outline" class="icon-settings"></ion-icon> Ayuda
-      </ion-label>
+    <ion-item class="item-settings">
+      <ion-icon name="help-circle-outline" class="icon-settings"></ion-icon> 
+      <ion-label>Ayuda</ion-label>
     </ion-item>
-    <ion-item href="" class="item-settings">
-      <ion-label>
-        <ion-icon name="chatbox-ellipses-outline" class="icon-settings"></ion-icon> Comentarios
-      </ion-label>
+    <ion-item class="item-settings">
+      <ion-icon name="chatbox-ellipses-outline" class="icon-settings"></ion-icon> 
+      <ion-label>Comentarios</ion-label>
     </ion-item>
   </ion-list>
 </div>
 <div class="cuenta-settings">
   <h2 class="subtitulo2-settings">CUENTA</h2> 
   <ion-list>
-    <ion-item href="" class="item-settings">
-      <ion-label>
-        <ion-icon name="person-outline" class="icon-settings"></ion-icon> Datos
-      </ion-label>
+    <ion-item class="item-settings">
+      <ion-icon name="person-outline" class="icon-settings"></ion-icon> 
+      <ion-label>Datos</ion-label>
     </ion-item>
     <ion-item href="" class="item-settings">
-      <ion-label>
-        <ion-icon name="log-out-outline" class="icon-settings"></ion-icon> Log out
-      </ion-label>
+      <ion-icon name="log-out-outline" class="icon-settings"></ion-icon> 
+      <ion-label>Log out</ion-label>
     </ion-item>
-    <ion-item href="" class="item-settings">
-      <ion-label>
-        <ion-icon name="brush-outline" class="icon-settings"></ion-icon> Tema
-      </ion-label>
+    <ion-item class="item-settings">
+      <ion-icon name="brush-outline" class="icon-settings"></ion-icon> 
+      <ion-label>Tema</ion-label>
+      <ion-select placeholder="Seleccione Tema" interface="popover" class="custom-options">
+        <ion-select-option value="oscuro">Oscuro</ion-select-option>
+        <ion-select-option value="claro">Claro</ion-select-option>
+      </ion-select>
     </ion-item>
   </ion-list>
 </div>
