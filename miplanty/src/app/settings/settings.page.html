@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar class="toolbar-settings">
-    <ion-button slot="start"  color="clear" class="boton-settings">
+    <ion-button slot="start"  color="clear" class="boton-settings" (click)="backHome()">
       <ion-icon name="arrow-back-outline" class="salir-settings"></ion-icon>
     </ion-button>
     <ion-title class="titulo-settings">CONFIGURACIÓN</ion-title>
@@ -53,17 +53,14 @@
       <ion-icon name="person-outline" class="icon-settings"></ion-icon> 
       <ion-label>Datos</ion-label>
     </ion-item>
-    <ion-item href="" class="item-settings">
+    <ion-item (click)="logout()" class="item-settings">
       <ion-icon name="log-out-outline" class="icon-settings"></ion-icon> 
       <ion-label>Log out</ion-label>
     </ion-item>
     <ion-item class="item-settings">
-      <ion-icon name="brush-outline" class="icon-settings"></ion-icon> 
-      <ion-label>Tema</ion-label>
-      <ion-select placeholder="Seleccione Tema" interface="popover" class="custom-options">
-        <ion-select-option value="oscuro">Oscuro</ion-select-option>
-        <ion-select-option value="claro">Claro</ion-select-option>
-      </ion-select>
+      <ion-icon name="moon-outline" class="icon-settings"></ion-icon> 
+      <ion-label>Tema Oscuro</ion-label>
+      <ion-toggle color="success"></ion-toggle>
     </ion-item>
   </ion-list>
 </div>
