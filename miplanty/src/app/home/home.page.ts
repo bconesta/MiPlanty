@@ -1,17 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../servicios/auth.service'
 import { Router } from '@angular/router'
+import { AngularFireDatabase } from '@angular/fire/compat/database';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
 })
+
+
 export class HomePage implements OnInit {
 
-  constructor(private authService : AuthService, public router : Router) { }
+  constructor(
+    private authService : AuthService,
+    public router : Router,
+    public db:AngularFireDatabase) { 
+
+    }
+
   public imgcentro = '../../assets/imgs/phomeCENTRAL.png'
   public textplanta = "PLANTA";
+
+  getData(){
+    this.reference=firebase.database().ref(/Prueba)
+    this.
+  }
   back(){
     this.router.navigate(['/'])
   }
