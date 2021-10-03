@@ -36,7 +36,7 @@
 <div class="ayuda-settings">
   <h2 class="subtitulo2-settings">AYUDA</h2> 
   <ion-list>
-    <ion-item class="item-settings">
+    <ion-item class="item-settings" (click)="popupAyuda()">
       <ion-icon name="help-circle-outline" class="icon-settings"></ion-icon> 
       <ion-label>Ayuda</ion-label>
     </ion-item>
@@ -53,9 +53,9 @@
       <ion-icon name="person-outline" class="icon-settings"></ion-icon> 
       <ion-label>Datos</ion-label>
     </ion-item>
-    <ion-item (click)="logout()" class="item-settings">
-      <ion-icon name="log-out-outline" class="icon-settings"></ion-icon> 
-      <ion-label>Log out</ion-label>
+    <ion-item class="item-settings" (click)="logout()">
+      <ion-icon name="log-out-outline" class="icon-settings"></ion-icon>
+      <ion-label>Log Out</ion-label>
     </ion-item>
     <ion-item class="item-settings">
       <ion-icon name="moon-outline" class="icon-settings"></ion-icon> 

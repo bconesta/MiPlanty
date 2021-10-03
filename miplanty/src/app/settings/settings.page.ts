@@ -17,8 +17,13 @@ export class SettingsPage implements OnInit {
 
   logout(){
     this.authService.logout();
+    this.router.navigate(['']);
   }
 
+  popupAyuda(){
+   
+  }
+  
   ngOnInit() {
   }
 
