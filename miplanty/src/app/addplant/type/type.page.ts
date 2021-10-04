@@ -3,31 +3,42 @@ import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { OptionsPage } from '../options/options.page';
 import { PassDataService } from 'src/app/servicios/pass-data.service';
+import { ToastController } from '@ionic/angular';
+
 @Component({
   selector: 'app-type',
   templateUrl: './type.page.html',
   styleUrls: ['./type.page.scss'],
 })
 export class TypePage implements OnInit {
-  tipoplanta : string;
+  tipoplanta : string = "";
   name : string = "";
 
   constructor(
     private router : Router,
     public modalController: ModalController,
-    private passData : PassDataService
+    private passData : PassDataService,
+    private toastController : ToastController
     ) { }
   back(){
-    this.router.navigate(['/home']);
+    this.router.navigate(['tabs/tabs/home']);
   }
   
+  async toasterror(){
+    const toast = await this.toastController.create({
+      message: 'Complete todos los datos para continuar :)',
+      duration: 2000
+    });
+    toast.present();
+  }
+
   next(){
-    if(this.tipoplanta['type'] != "" && this.name != ""){
+    if(this.tipoplanta != "" && this.name != ""){
       this.passData.setData(this.name, this.tipoplanta['type']);
       this.router.navigate(['/add/connection']);
     }
     else{
-      console.log("Faltan datos juju")
+      this.toasterror();
     }
   }
   async presentModal() {

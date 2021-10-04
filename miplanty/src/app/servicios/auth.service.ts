@@ -8,10 +8,16 @@ import { first } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
+  
+  uiduser : any;
+  
   constructor(private AFauth : AngularFireAuth, private AFD : AngularFireDatabase) {
     AFauth.authState.subscribe(user=>{
       console.log(user);
     })
+    this.getUser().then(resolve => {
+      this.uiduser = resolve['_delegate']['uid'];
+    }, rejected=>{});
   }
 
   /*login(email:string, password:string){
@@ -51,6 +57,9 @@ export class AuthService {
         rejected();
       }
     });
+  }
+  getUserString(){
+    return this.uiduser;
   }
   
 }

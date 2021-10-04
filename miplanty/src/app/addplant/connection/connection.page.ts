@@ -26,8 +26,8 @@ export class ConnectionPage implements OnInit {
   back(){
     this.router.navigate(['/add/type']);
   }
-  lol(){
-    this.router.navigate(['/home']);
+  close(){
+    this.router.navigate(['/tabs/tabs/home']);
     //this.obje = this.passData.getData();
     //console.log(this.obje['type'])
   }
@@ -44,14 +44,16 @@ export class ConnectionPage implements OnInit {
       })
     });
     if(found == true){
-      this.SerialBT.connect(mac);
-      this.SerialBT.write("SSID");
-      alert("CONECTADOOO")
+      this.SerialBT.connect(mac).subscribe(success=>{
+        (document.getElementById("textoo") as any).style = "display: none;";
+        (document.getElementById("boton_sig") as any).style = "display: none;";
+        (document.getElementById("seg") as any).style = "display: block;";
+        this.SerialBT.write("SSID");
+        alert("CONECTADO")
+      }, error=>{});
       
     }
     else{alert("No encontrado")}
-    (document.getElementById("textoo") as any).style = "display: none;";
-    (document.getElementById("seg") as any).style = "display: block;";
   }
 
   sendSSID(){
@@ -71,12 +73,17 @@ export class ConnectionPage implements OnInit {
   sendPASS(){
     if(this.primera == false){
       this.SerialBT.write(this.pass);
+      this.authService.getUser().then(resolve=>{
+        uid = resolve['_delegate']['uid'];
+      },rejected=>{});
       this.primera=true
     }
     else{
-      this.authService.getUser().then(function(data){uid = data['_delegate']['uid']; console.log(data['_delegate']['uid']);});
-      this.SerialBT.write(uid.toString);
-      alert(uid.toString);
+      this.authService.getUser().then(resolve=>{
+        uid = resolve['_delegate']['uid'];
+      },rejected=>{});      
+      this.SerialBT.write(uid);
+      alert(uid);
       (document.getElementById("seg") as any).style = "display: none;";
       (document.getElementById("ter") as any).style = "display: none;";
     }
