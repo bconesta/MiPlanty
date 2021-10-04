@@ -23,7 +23,7 @@ export class SettingsPage implements OnInit {
   popupAyuda(){
    
   }
-  
+  //test git
   ngOnInit() {
   }
 
