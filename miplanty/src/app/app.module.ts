@@ -11,6 +11,9 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AngularFireAuthModule, PERSISTENCE } from '@angular/fire/compat/auth';
 import { BluetoothSerial } from '@ionic-native/bluetooth-serial/ngx';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+import { OpenNativeSettings } from '@ionic-native/open-native-settings/ngx';
 
 
 const firebaseConfig = {
@@ -32,9 +35,15 @@ const firebaseConfig = {
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, BluetoothSerial, { provide: PERSISTENCE, useValue: 'local' }],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, BluetoothSerial, { provide: PERSISTENCE, useValue: 'local' }, OpenNativeSettings],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

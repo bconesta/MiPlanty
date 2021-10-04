@@ -13,7 +13,7 @@ export class LoginPage implements OnInit {
   user : string;
   password : string;
   constructor(private authService : AuthService, public router : Router, private bt : BluetoothSerial) { 
-    if(this.authService.getUser()){console.log(this.authService.getUser())}
+    //if(this.authService.getUser()){console.log(this.authService.getUser['_delegate'])}
   }
 
   showPass(){
@@ -40,6 +40,9 @@ export class LoginPage implements OnInit {
     forpass(){
       this.router.navigate(['/forgotten-password']);
     }
+  register(){
+    
+  }
 
   ngOnInit() {
   }

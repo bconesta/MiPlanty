@@ -1,0 +1,26 @@
+.boton_centrado{
+    text-align: center;
+    margin-top: 5%;
+    display: block;
+    button{
+        width: 50%;
+        height: 50px;
+        border-radius: 25px;
+        background-color: #16a045;
+        color: white;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+}
+.texto{
+    text-align: center;
+    margin-left: 5%;
+    margin-right: 5%;
+    button{
+        font-weight: bold;
+        text-transform: uppercase;
+        height: 40px;
+        border-radius: 20px;
+        width: 30%;
+    }
+}
