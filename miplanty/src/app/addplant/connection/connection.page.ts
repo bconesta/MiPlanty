@@ -82,8 +82,8 @@ export class ConnectionPage implements OnInit {
       this.authService.getUser().then(resolve=>{
         uid = resolve['_delegate']['uid'];
       },rejected=>{});      
-      this.SerialBT.write(uid);
-      alert(uid);
+      this.SerialBT.write(uid+'/'+this.passData.getData()['name']);
+      alert(uid+'/'+this.passData.getData()['name']);
       (document.getElementById("seg") as any).style = "display: none;";
       (document.getElementById("ter") as any).style = "display: none;";
     }
