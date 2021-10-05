@@ -16,20 +16,58 @@ export class HomePage implements OnInit {
     private authService : AuthService,
     public router : Router,
     public db:AngularFireDatabase) { 
-
+      
     }
 
-  public imgcentro = '../../assets/imgs/phomeCENTRAL.png'
+  public imgcentro = '../../assets/imgs/phomeCENTRAL.png';
   public textplanta = "PLANTA";
+  public rutausuario = '';
 
+  /*
   getData(){
     this.reference=firebase.database().ref(/Prueba)
     this.
   }
+  */
   back(){
     this.router.navigate(['/'])
   }
 
+  //LECTURA RUTAS
+  getRutaUser(){
+    this.db.database.ref('/Users').on('value', (snapshot)=>{
+     this.rutausuario = snapshot.val();
+     console.log(this.rutausuario)
+    })
+  }
+
+  //TEST LEER DATOS
+  getData(){
+    this.db.database.ref('/Users/9BkSKMNQu3d8curVqKa97bikVlt1/hum').on('value', (snapshot)=> {
+      const data = snapshot.val();
+      (document.getElementById("humedad") as any).value = data;
+      (document.getElementById("humedadtext")).innerHTML = data + '%';
+    });
+  }
+  /*
+  getData(){
+    this.db.database.ref('/Users/' + (this.rutausuario) + '/hum').on('value', (snapshot)=> {
+      const data = snapshot.val();
+      (document.getElementById("humedad") as any).value = data;
+      (document.getElementById("humedadtext")).innerHTML = data;
+    });
+    this.db.database.ref('/Users/' + this.rutausuario + '/luz').on('value', (snapshot)=> {
+      const data = snapshot.val();
+      (document.getElementById("luz") as any).value = data;
+      (document.getElementById("luztext")).innerHTML = data;
+    });
+    this.db.database.ref('/Users/' + this.rutausuario + '/temp').on('value', (snapshot)=> {
+      const data = snapshot.val();
+      (document.getElementById("temperatura") as any).value = data;
+      (document.getElementById("temperaturatext")).innerHTML = data;
+    });
+  }
+  */
   new(){
     this.router.navigate(['/tabs/tabs/tab2'])
   }
