@@ -61,5 +61,12 @@ export class AuthService {
   getUserString(){
     return this.uiduser;
   }
+  signup(mail : string , pass : string){
+    return new Promise((resolve, rejected) =>{
+      this.AFauth.createUserWithEmailAndPassword(mail, pass).then(res =>{
+        resolve(res);
+      }).catch(err => rejected(err))
+    });
+  }
   
 }

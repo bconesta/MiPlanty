@@ -41,7 +41,7 @@ export class LoginPage implements OnInit {
       this.router.navigate(['/forgotten-password']);
     }
   register(){
-    
+    this.router.navigate(['/register']);
   }
 
   ngOnInit() {
