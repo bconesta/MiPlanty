@@ -59,6 +59,7 @@ void setup() {
     while(WiFi.status() != WL_CONNECTED){
       Serial.print(".");
       if(millis()-aux > 60000) break;
+      delay(1000);
     }
     
     if(WiFi.status() != WL_CONNECTED) estado=UNCON;
@@ -85,6 +86,10 @@ void loop() {
         instChanged = true;               //y se da aviso que inst fue modificada, con la variable "instChanged" (si inst fue modificada, 
       }                                   //es lo mismo que decir que se leyeron datos nuevos del puerto serie)
       
+      if(instChanged){
+        Serial.println(inst);
+      }
+
       if(inst == "SSID" && instChanged) SSID_select=true; //Si el dato recibido fue "SSID", eso indica que el siguiente dato recibido será el SSID de la red
       else if(inst == "PASS" && instChanged) PASS_select=true; //Si el dato recibido fue "PASS", eso indica que el siguiente dato recibido será la password de la red
       else if(SSID_select && instChanged){SSID = inst; SSID_select = false; SSID_changed = true;} //El dato recibido es el SSID de la red
@@ -102,7 +107,7 @@ void loop() {
         }
         //FIN DE CONVERSIÓN 
         WiFi.begin(SSID_c, PASS_c);
-        SerialBT.print("Intentando");
+        Serial.println("Intentando");
         SSID_changed = false;
         PASS_changed = false;
       }
@@ -111,14 +116,14 @@ void loop() {
 
       //CONDICION CAMBIO DE ESTADO
       if(WiFi.status() == WL_CONNECTED){
-        SerialBT.print("Conectando");
+        Serial.println("Conectando");
         address = 0;
         EEPROM.writeString(address, SSID);
         address += sizeof(SSID);
         EEPROM.writeString(address, PASS);
         address += sizeof(PASS);
         estado=CON_FIREUNCON;
-        SerialBT.print("Conectado");
+        Serial.println("Conectado");
       }
     break;
     
