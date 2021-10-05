@@ -55,6 +55,8 @@ void setup() {
     }
     //FIN DE CONVERSIÓN 
     WiFi.begin(SSID_c, PASS_c);
+    Serial.print(SSID);
+    Serial.println(PASS);
     long aux = millis();
     while(WiFi.status() != WL_CONNECTED){
       Serial.print(".");
@@ -119,8 +121,10 @@ void loop() {
         Serial.println("Conectando");
         address = 0;
         EEPROM.writeString(address, SSID);
+        EEPROM.commit();
         address += sizeof(SSID);
         EEPROM.writeString(address, PASS);
+        EEPROM.commit();
         address += sizeof(PASS);
         estado=CON_FIREUNCON;
         Serial.println("Conectado");
@@ -131,11 +135,13 @@ void loop() {
       if(SerialBT.available()){
         ruta_fire = SerialBT.readString(); 
         EEPROM.writeString(address, ruta_fire);
+        EEPROM.commit();
         estado = CON_FIRECON;
         Firebase.begin(DB_URL, DB_SECRET);
         Firebase.reconnectWiFi(true);
         SerialBT.end();
         btEn = false;
+        EEPROM.end();
       }
     break;
 
