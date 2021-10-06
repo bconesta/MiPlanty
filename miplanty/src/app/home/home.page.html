@@ -12,11 +12,11 @@
 
 <ion-content>
   <div class="superior-home">
-    <ion-button class="boton-i" fill="clear" (click)="getData()">
+    <ion-button class="boton-i" fill="clear" (click)="changeImgI()">
       <ion-icon name="caret-back" class="flechas-home"></ion-icon>
     </ion-button>
     <img [src]="imgcentro" alt="planta">
-    <ion-button class="boton-d" fill="clear" (click)="getRutaUser()">
+    <ion-button class="boton-d" fill="clear" (click)="changeImgD()">
       <ion-icon name="caret-forward" class="flechas-home"></ion-icon>
     </ion-button>
     <p class="nombre-planta">
@@ -25,17 +25,17 @@
   </div>
   <div class="inferior">
     <div class="agua-barra">
-      <ion-icon name="water" color="secondary"></ion-icon>
+      <ion-icon id="icono_agua" name="water" color="secondary"></ion-icon>
       <ion-progress-bar class="barra-home" color="secondary" id="humedad"></ion-progress-bar>
       <p class="numero-barra" id="humedadtext"></p>
     </div>
     <div class="luz-barra">
-      <ion-icon name="sunny" color="warning"></ion-icon>
+      <ion-icon id="icono_sol" name="sunny" color="warning"></ion-icon>
       <ion-progress-bar class="barra-home" color="warning" id="luz"></ion-progress-bar>
       <p class="numero-barra" id="luztext"></p>
     </div>
     <div class="temp-barra">
-      <ion-icon name="thermometer" color="danger"></ion-icon>
+      <ion-icon id="icono_temp" name="thermometer" color="danger"></ion-icon>
       <ion-progress-bar class="barra-home" color="danger" id="temperatura"></ion-progress-bar>
       <p class="numero-barra" id="temperaturatext"></p>
     </div>

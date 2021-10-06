@@ -22,6 +22,15 @@ export class HomePage implements OnInit {
   public imgcentro = '../../assets/imgs/phomeCENTRAL.png';
   public textplanta = "PLANTA";
   public rutausuario = '';
+  plantys : any;
+  cantidad : number;
+  selector : number = 0;
+
+  nombre : string;
+  tipo : string;
+  hum : any;
+  luz: any;
+  temp : any;
 
   /*
   getData(){
@@ -45,83 +54,66 @@ export class HomePage implements OnInit {
   }
 
   //TEST LEER DATOS
-  getData(){
-    this.db.database.ref('/Users/9BkSKMNQu3d8curVqKa97bikVlt1/hum').on('value', (snapshot)=> {
-      const data = snapshot.val();
-      (document.getElementById("humedad") as any).value = data;
-      (document.getElementById("humedadtext")).innerHTML = data + '%';
+  /*getData(){
+    this.db.database.ref('/Users/9BkSKMNQu3d8curVqKa97bikVlt1/').on('value', (snapshot)=> {
+      this.plantys = snapshot.val();
+      this.getPlantys();
     });
-  }
-  /*
-  getData(){
-    this.db.database.ref('/Users/' + (this.rutausuario) + '/hum').on('value', (snapshot)=> {
-      const data = snapshot.val();
-      (document.getElementById("humedad") as any).value = data;
-      (document.getElementById("humedadtext")).innerHTML = data;
-    });
-    this.db.database.ref('/Users/' + this.rutausuario + '/luz').on('value', (snapshot)=> {
-      const data = snapshot.val();
-      (document.getElementById("luz") as any).value = data;
-      (document.getElementById("luztext")).innerHTML = data;
-    });
-    this.db.database.ref('/Users/' + this.rutausuario + '/temp').on('value', (snapshot)=> {
-      const data = snapshot.val();
-      (document.getElementById("temperatura") as any).value = data;
-      (document.getElementById("temperaturatext")).innerHTML = data;
-    });
-  }
-  */
+  }*/
+  
   new(){
     this.router.navigate(['/add/type'])
   }
 
+
+  getPlantys(){
+    this.cantidad = Object.entries(this.plantys).length;
+    this.nombre = Object.entries(this.plantys)[this.selector][0];
+    
+    this.hum = Object.entries(this.plantys)[this.selector][1]['hum'];
+    document.getElementById("humedadtext").innerHTML = (this.hum * 100) + "%";
+    (document.getElementById("humedad") as any).value  = this.hum;
+    (document.getElementById("icono_agua") as any).style = "left:" + (60*this.hum+5) + "%;";
+
+    this.luz = Object.entries(this.plantys)[this.selector][1]['luz'];
+    document.getElementById("luztext").innerHTML = (this.luz * 100) + "%";
+    (document.getElementById("luz") as any).value  = this.luz;
+    (document.getElementById("icono_sol") as any).style = "left:" + (60*this.luz+5) + "%;";
+
+    this.temp = Object.entries(this.plantys)[this.selector][1]['temp'];
+    document.getElementById("temperaturatext").innerHTML = (this.temp * 100) + "%";
+    (document.getElementById("temperatura") as any).value  = this.temp;
+    (document.getElementById("icono_temp") as any).style = "left:" + (60*this.temp+5) + "%;";
+
+    this.textplanta = this.nombre;
+  }
+
+
+
+
   changeImgD(){
-    if(this.imgcentro=='../../assets/imgs/phomeCENTRAL.png')
-    {
-      this.imgcentro='../../assets/imgs/phomeCACTUS.png';
-      this.textplanta = 'CACTUS';
+    this.selector = this.selector+1;
+    if(this.selector>(this.cantidad-1)){
+      this.selector=0;
     }
-    else if (this.imgcentro=='../../assets/imgs/phomeCACTUS.png')
-    {
-      this.imgcentro='../../assets/imgs/phomeLUZ.png';
-      this.textplanta='DE LUZ';
-    }
-    else if (this.imgcentro=='../../assets/imgs/phomeLUZ.png')
-    {
-      this.imgcentro='../../assets/imgs/phomeSOMBRA.png';
-      this.textplanta='DE SOMBRA';
-    }
-    else 
-    {
-      this.imgcentro='../../assets/imgs/phomeCENTRAL.png';
-      this.textplanta='PLANTA';
-    }
+    this.getPlantys();
   }
 
   changeImgI(){
-    if(this.imgcentro=='../../assets/imgs/phomeCENTRAL.png')
-    {
-      this.imgcentro='../../assets/imgs/phomeSOMBRA.png';
-      this.textplanta='DE SOMBRA';
+    this.selector = this.selector-1;
+    if(this.selector<0){
+      this.selector=this.cantidad-1;
     }
-    else if (this.imgcentro=='../../assets/imgs/phomeSOMBRA.png')
-    {
-      this.imgcentro='../../assets/imgs/phomeLUZ.png';
-      this.textplanta='DE LUZ';
-    }
-    else if (this.imgcentro=='../../assets/imgs/phomeLUZ.png')
-    {
-      this.imgcentro='../../assets/imgs/phomeCACTUS.png';
-      this.textplanta = 'CACTUS';
-    }
-    else 
-    {
-      this.imgcentro='../../assets/imgs/phomeCENTRAL.png';
-      this.textplanta='PLANTA';
-    }
+    this.getPlantys();
   }
   
   ngOnInit() {
+    
   }
-
+  ionViewDidEnter(){
+    this.db.database.ref('/Users/' + this.authService.uid + '/').on('value', (snapshot)=> {
+      this.plantys = snapshot.val();
+      this.getPlantys();
+    });
+  }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../servicios/auth.service'
 import { Router } from '@angular/router'
 import { BluetoothSerial } from '@ionic-native/bluetooth-serial/ngx';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Component({
   selector: 'app-login',
@@ -12,10 +13,19 @@ export class LoginPage implements OnInit {
   
   user : string;
   password : string;
-  constructor(private authService : AuthService, public router : Router, private bt : BluetoothSerial) { 
-    //if(this.authService.getUser()){console.log(this.authService.getUser['_delegate'])}
+  constructor(private AFauth : AngularFireAuth, private authService : AuthService, public router : Router, private bt : BluetoothSerial) { 
+    
   }
-
+  
+  ngOnInit() {
+    
+  }
+  ionViewDidEnter(){
+    this.AFauth.authState.subscribe(user=>{
+      if(user){this.router.navigate(['tabs/tabs/home']);}
+      
+    })
+  }
   showPass(){
     console.log(this.user);
     console.log(this.password);
@@ -34,6 +44,7 @@ export class LoginPage implements OnInit {
   log_in(){
     this.authService.login(this.user, this.password).then(res =>{
       this.router.navigate(['/tabs/tabs/home']);
+      this.authService.uid = res['user']['_delegate']['uid'];
     }).catch(err => alert('Los datos son incorrectos'))
     
     }
@@ -44,7 +55,6 @@ export class LoginPage implements OnInit {
     this.router.navigate(['/register']);
   }
 
-  ngOnInit() {
-  }
+  
 
 }
