@@ -24,7 +24,7 @@ FirebaseData fbdo;
 #define sensorhum 8
 #define sensorluz 10
 
-#define EEPROM_SIZE 12
+#define EEPROM_SIZE 512
 String SSID = "-";
 String PASS = "-";
 String ruta_fire = "-";
@@ -39,11 +39,11 @@ void setup() {
   EEPROM.begin(EEPROM_SIZE);
 
   SSID = EEPROM.readString(address);
-  address += sizeof(SSID);
+  address += (SSID.length()+1);
 
   if(SSID != "-"){
     PASS = EEPROM.readString(address);
-    address += sizeof(PASS);
+    address += (PASS.length()+1);
     //CONVERSIÓN DE STRING A ARRAY DE CHAR PARA USAR EN METODO begin() de WiFi
     char SSID_c[SSID.length()];
     for (int i = 0; i < sizeof(SSID); i++) {
@@ -109,6 +109,8 @@ void loop() {
         }
         //FIN DE CONVERSIÓN 
         WiFi.begin(SSID_c, PASS_c);
+        Serial.println(SSID_c);
+        Serial.println(PASS_c);
         Serial.println("Intentando");
         SSID_changed = false;
         PASS_changed = false;
@@ -121,11 +123,9 @@ void loop() {
         Serial.println("Conectando");
         address = 0;
         EEPROM.writeString(address, SSID);
-        EEPROM.commit();
-        address += sizeof(SSID);
+        address += (SSID.length()+1);
         EEPROM.writeString(address, PASS);
-        EEPROM.commit();
-        address += sizeof(PASS);
+        address += (PASS.length()+1);
         estado=CON_FIREUNCON;
         Serial.println("Conectado");
       }
@@ -136,6 +136,7 @@ void loop() {
         ruta_fire = SerialBT.readString(); 
         EEPROM.writeString(address, ruta_fire);
         EEPROM.commit();
+        Serial.println(ruta_fire);
         estado = CON_FIRECON;
         Firebase.begin(DB_URL, DB_SECRET);
         Firebase.reconnectWiFi(true);
@@ -163,6 +164,8 @@ void loop() {
       Firebase.setFloat(fbdo, ruta_temp, temp);
       Firebase.setFloat(fbdo, ruta_hum, hum);
       Firebase.setFloat(fbdo, ruta_luz, luz);
+
+      Serial.println("Intentando subir a firebase");
     break;
   }
 
