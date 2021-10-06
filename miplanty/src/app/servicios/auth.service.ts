@@ -10,14 +10,12 @@ import { first } from 'rxjs/operators';
 export class AuthService {
   
   uiduser : any;
-  
+  uid : any;
+  uidnew : any;
   constructor(private AFauth : AngularFireAuth, private AFD : AngularFireDatabase) {
     AFauth.authState.subscribe(user=>{
-      console.log(user);
+      this.uid = user['_delegate']['uid'];
     })
-    this.getUser().then(resolve => {
-      this.uiduser = resolve['_delegate']['uid'];
-    }, rejected=>{});
   }
 
   /*login(email:string, password:string){
@@ -33,7 +31,7 @@ export class AuthService {
       return this.AFauth.signInWithEmailAndPassword(email, password);
     });
   }
-
+  
   logout(){
     return new Promise((resolve, rejected) =>{
       this.AFauth.signOut().then(res =>{
@@ -60,6 +58,9 @@ export class AuthService {
   }
   getUserString(){
     return this.uiduser;
+  }
+  getUID(){
+    return this.uid;
   }
   signup(mail : string , pass : string){
     return new Promise((resolve, rejected) =>{
