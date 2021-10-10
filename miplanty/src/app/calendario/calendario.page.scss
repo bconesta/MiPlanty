@@ -1,0 +1,39 @@
+.toolbar-calend{
+    --background:rgb(71, 181, 225);
+    height: 60px;
+    position: relative;
+    .img{
+        position:absolute;
+        right: 5%;
+    }
+}
+
+.boton-calend{
+    --box-shadow: none;
+}
+
+.salir-calend{
+    position: absolute;
+    left: 2%;
+    top:25%;
+    color:rgb(255, 255, 255);
+    font-size: x-large;
+    font-weight: 800;
+}
+
+.titulo-calend{
+    color:rgb(255, 255, 255);
+    font-weight: 700;
+    position: absolute;
+    font-size: 25px;
+    font-family:monospace;
+}
+
+.superior-calend{
+    height: 60%;
+
+}
+
+.inferior-calend{
+    height: 40%;
+}

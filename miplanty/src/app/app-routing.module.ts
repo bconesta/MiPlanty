@@ -36,6 +36,10 @@ const routes: Routes = [
   },  {
     path: 'options',
     loadChildren: () => import('./addplant/options/options.module').then( m => m.OptionsPageModule)
+  },
+  {
+    path: 'calendario',
+    loadChildren: () => import('./calendario/calendario.module').then( m => m.CalendarioPageModule)
   }
 
 
