@@ -1,3 +1,34 @@
+.toolbar-home{
+    --background: rgb(22,160,69);
+    height: 60px;
+    position: relative;
+    .boton-atras{
+        position: absolute;
+        left: 2%;
+        top: 25%;
+        ion-button{
+            font-size: 20px;
+            font-family: monospace;
+            font-weight: 500;
+        }
+    }
+    .boton-cerrar{
+        position: absolute;
+        right: 2%;
+        top: 25%;
+        ion-button{
+            font-size: 20px;
+            font-family: monospace;
+            font-weight: 500;
+        }
+    }
+    ion-title{
+        text-align: center;
+        margin-top: 2%;
+        color: white;
+    }
+}
+
 .boton_centrado{
     text-align: center;
     margin-top: 5%;
