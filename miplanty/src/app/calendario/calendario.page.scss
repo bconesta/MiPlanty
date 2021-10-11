@@ -27,6 +27,17 @@
     position: absolute;
     font-size: 25px;
     font-family:monospace;
+    position:absolute;
+    padding:0;
+    top:25%;
+    left:33%
+}
+
+.usuario-calend{
+    height: 40px;
+    position: absolute;
+    top:17%;
+    left:85%;
 }
 
 .superior-calend{
@@ -36,4 +47,16 @@
 
 .inferior-calend{
     height: 40%;
+    position: relative;
+}
+
+.añadir-calend{
+    position: absolute; 
+    width: 100%;
+    bottom: 0%;
+    background-color: rgb(71, 181, 225);
+}
+
+.boton-añadir{
+    --box-shadow: none;
 }
