@@ -71,19 +71,19 @@ export class HomePage implements OnInit {
     this.nombre = Object.entries(this.plantys)[this.selector][0];
     
     this.hum = Object.entries(this.plantys)[this.selector][1]['hum'];
-    document.getElementById("humedadtext").innerHTML = (this.hum * 100) + "%";
-    (document.getElementById("humedad") as any).value  = this.hum;
-    (document.getElementById("icono_agua") as any).style = "left:" + (60*this.hum+5) + "%;";
+    document.getElementById("humedadtext").innerHTML = this.hum.toFixed(1) + "%";
+    (document.getElementById("humedad") as any).value  = this.hum/100;
+    (document.getElementById("icono_agua") as any).style = "left:" + (0.6*this.hum+5) + "%;";
 
     this.luz = Object.entries(this.plantys)[this.selector][1]['luz'];
-    document.getElementById("luztext").innerHTML = (this.luz * 100) + "%";
-    (document.getElementById("luz") as any).value  = this.luz;
-    (document.getElementById("icono_sol") as any).style = "left:" + (60*this.luz+5) + "%;";
+    document.getElementById("luztext").innerHTML = this.luz.toFixed(1) + "%";
+    (document.getElementById("luz") as any).value  = this.luz/100;
+    (document.getElementById("icono_sol") as any).style = "left:" + (0.6*this.luz+5) + "%;";
 
     this.temp = Object.entries(this.plantys)[this.selector][1]['temp'];
-    document.getElementById("temperaturatext").innerHTML = (this.temp * 100) + "%";
-    (document.getElementById("temperatura") as any).value  = this.temp;
-    (document.getElementById("icono_temp") as any).style = "left:" + (60*this.temp+5) + "%;";
+    document.getElementById("temperaturatext").innerHTML = this.temp.toFixed(1) + "%";
+    (document.getElementById("temperatura") as any).value  = this.temp/100;
+    (document.getElementById("icono_temp") as any).style = "left:" + (0.6*this.temp+5) + "%;";
 
     this.textplanta = this.nombre;
   }
