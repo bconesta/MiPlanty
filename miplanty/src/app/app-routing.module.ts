@@ -40,6 +40,10 @@ const routes: Routes = [
   {
     path: 'calendario',
     loadChildren: () => import('./calendario/calendario.module').then( m => m.CalendarioPageModule)
+  },
+  {
+    path: 'cal-modal',
+    loadChildren: () => import('./pages/cal-modal/cal-modal.module').then( m => m.CalModalPageModule)
   }
 
 
