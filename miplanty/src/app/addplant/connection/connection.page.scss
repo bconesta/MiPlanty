@@ -55,3 +55,45 @@
         width: 30%;
     }
 }
+#wifi-scan{
+    h4{
+        font-weight: bold;
+        text-align: center;
+        margin: 10% 0 5%;
+    }
+    #wifi_list{
+        ion-item{
+            ion-label{
+                font-weight: bold;
+            }
+        }
+    }
+    .list-buttons{
+        margin-left: 10%;
+        margin-right: 10%;
+        display: flex;
+        align-items: center;
+        button{
+            height: 45px;
+            border-radius: 23px;
+            font-weight: bold;
+            text-transform: uppercase;
+            &:first-child{
+                width: 40%;
+                color: white;
+                background-color: #16a045;
+                margin: 0 5% 0 0;
+            }
+            &:last-child{
+                width: 55%;
+                font-size: 11px;
+                background-color: rgba(0, 0, 0, 0.1);
+            }
+        }
+    }
+}
+h4{
+    font-weight: bold;
+    text-align: center;
+    margin: 10% 0 5%;
+}
