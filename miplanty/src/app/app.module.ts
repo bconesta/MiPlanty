@@ -15,6 +15,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { OpenNativeSettings } from '@ionic-native/open-native-settings/ngx';
 import { WifiWizard2 } from '@ionic-native/wifi-wizard-2/ngx';
+import { Globalization } from '@ionic-native/globalization/ngx';
 
 
 const firebaseConfig = {
@@ -44,7 +45,7 @@ const firebaseConfig = {
       registrationStrategy: 'registerWhenStable:30000'
     })
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, BluetoothSerial, { provide: PERSISTENCE, useValue: 'local' }, OpenNativeSettings, WifiWizard2],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, BluetoothSerial, { provide: PERSISTENCE, useValue: 'local' }, OpenNativeSettings, WifiWizard2, Globalization],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

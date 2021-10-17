@@ -18,22 +18,22 @@
     </ion-item>-->
     <ion-icon name="person" class="mailicon"></ion-icon>
     <ion-item class="mail">
-      <ion-label class="inputlogin"  position="floating">Usuario</ion-label>
+      <ion-label class="inputlogin"  position="floating">{{userlabel}}</ion-label>
       <ion-input class="inputlogin" [(ngModel)]=user></ion-input>
     </ion-item>
 
     <ion-icon name="lock-closed" class="passIcon"></ion-icon>
     <ion-item class="contra">
-      <ion-label class="inputlogin" position="floating">Contraseña</ion-label>
+      <ion-label class="inputlogin" position="floating">{{passlabel}}</ion-label>
       <ion-input class="inputlogin" [(ngModel)]=password id="passId" type="password"></ion-input>
       <ion-icon id="seeIcon" name="eye-outline" (click)="showPass()"></ion-icon>
     </ion-item>
     
   </div>
   <div class="boton_centrado">
-    <button class="ingresar-b"(click)="log_in()">INGRESAR</button>
-    <a (click)="forpass()">¿Olvidaste tu contraseña?</a>
-    <a (click)="register()">Registrarse</a>
+    <button class="ingresar-b"(click)="log_in()">{{loginlabel}}</button>
+    <a (click)="forpass()">{{fplabel}}</a>
+    <a (click)="register()">{{reglabel}}</a>
   </div>
   <!--<div style="text-align: center;">
     <h1 id="texto">HOLA</h1>

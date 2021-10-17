@@ -3,6 +3,7 @@ import { AuthService } from '../servicios/auth.service'
 import { Router } from '@angular/router'
 import { BluetoothSerial } from '@ionic-native/bluetooth-serial/ngx';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { LanguageService } from '../servicios/language.service';
 
 @Component({
   selector: 'app-login',
@@ -13,19 +14,41 @@ export class LoginPage implements OnInit {
   
   user : string;
   password : string;
-  constructor(private AFauth : AngularFireAuth, private authService : AuthService, public router : Router, private bt : BluetoothSerial) { 
+
+  constructor(private AFauth : AngularFireAuth, private authService : AuthService, public router : Router, private leng : LanguageService) { 
     
   }
   
+  userlabel : string;
+  passlabel : string;
+  loginlabel : string;
+  fplabel : string;
+  reglabel : string;
+
   ngOnInit() {
-    
-  }
-  ionViewDidEnter(){
     this.AFauth.authState.subscribe(user=>{
       if(user){this.router.navigate(['tabs/tabs/home']);}
       
     })
+    if(!this.leng.value){
+      this.leng.getLanguage();
+    }
+    this.userlabel = this.leng.language[this.leng.value].LoginPage.userlabel;
+    this.passlabel = this.leng.language[this.leng.value].LoginPage.passlabel;
+    this.loginlabel = this.leng.language[this.leng.value].LoginPage.loginlabel;
+    this.fplabel = this.leng.language[this.leng.value].LoginPage.fplabel;
+    this.reglabel = this.leng.language[this.leng.value].LoginPage.reglabel;
+    
   }
+  ionViewDidEnter(){
+    this.userlabel = this.leng.language[this.leng.value].LoginPage.userlabel;
+    this.passlabel = this.leng.language[this.leng.value].LoginPage.passlabel;
+    this.loginlabel = this.leng.language[this.leng.value].LoginPage.loginlabel;
+    this.fplabel = this.leng.language[this.leng.value].LoginPage.fplabel;
+    this.reglabel = this.leng.language[this.leng.value].LoginPage.reglabel;
+  }
+
+
   showPass(){
     console.log(this.user);
     console.log(this.password);
@@ -48,9 +71,9 @@ export class LoginPage implements OnInit {
     }).catch(err => alert('Los datos son incorrectos'))
     
     }
-    forpass(){
-      this.router.navigate(['/forgotten-password']);
-    }
+  forpass(){
+    this.router.navigate(['/forgotten-password']);
+  }
   register(){
     this.router.navigate(['/register']);
   }

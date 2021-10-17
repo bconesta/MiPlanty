@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../servicios/auth.service'
 import { Router } from '@angular/router'
 import { AngularFireDatabase } from '@angular/fire/compat/database';
+import { LanguageService } from '../servicios/language.service';
 
 @Component({
   selector: 'app-home',
@@ -15,10 +16,13 @@ export class HomePage implements OnInit {
   constructor(
     private authService : AuthService,
     public router : Router,
-    public db:AngularFireDatabase) { 
-      
-    }
+    public db:AngularFireDatabase,
+    private leng : LanguageService
+    ) { 
+    
+  }
 
+  lenguaje : string = "en"
   public imgcentro = '../../assets/imgs/phomeCENTRAL.png';
   public textplanta = "PLANTA";
   public rutausuario = '';
@@ -107,13 +111,19 @@ export class HomePage implements OnInit {
     this.getPlantys();
   }
   
+
+
+  logout : string;
+
   ngOnInit() {
-    
+    //this.lenguaje = this.leng.getLanguage();
+    this.logout = this.leng.language[this.leng.value].HomePage.logout;
   }
   ionViewDidEnter(){
     this.db.database.ref('/Users/' + this.authService.uid + '/').on('value', (snapshot)=> {
       this.plantys = snapshot.val();
       this.getPlantys();
     });
+    this.logout = this.leng.language[this.leng.value].HomePage.logout;
   }
 }
