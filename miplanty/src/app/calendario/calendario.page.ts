@@ -5,6 +5,7 @@ import { AuthService } from '../servicios/auth.service'
 import { CalendarComponent } from 'ionic2-calendar';
 import { CalModalPage } from '../pages/cal-modal/cal-modal.page';
 import {ModalController} from '@ionic/angular';
+import { formatDate } from '@angular/common';
 
 
 
@@ -20,13 +21,13 @@ export class CalendarioPage implements OnInit {
 
   calendar = {
     mode:'month',
-    currentDate: new Date()
+    currentDate: new Date(),
   };
 
   @ViewChild(CalendarComponent) myCal: CalendarComponent;
 
 
-  constructor(private authService : AuthService, private modalCtrl:ModalController, public router : Router) { }
+  constructor(private authService : AuthService, private modalCtrl: ModalController, public router : Router) { }
 
   backHome(){
     this.router.navigate(['/tabs/tabs/home']);
@@ -43,8 +44,8 @@ export class CalendarioPage implements OnInit {
     this.myCal.slidePrev();
   }
 
-  tituloMeses(titulo){
-    this.vistaTitle = titulo;
+  tituloMeses(title){
+    this.vistaTitle = title;
   }
 
   async newCalend(){
@@ -58,7 +59,7 @@ export class CalendarioPage implements OnInit {
 
     modal.onDidDismiss().then((resultado) => {
       if (resultado.data && resultado.data.event) {
-        let event =resultado.data.event;
+        let event = resultado.data.event;
         if(event.allDay){
           let start = event.startTime;
           event.startTime = new Date(
@@ -66,6 +67,13 @@ export class CalendarioPage implements OnInit {
               start.getUTCFullYear(),
               start.getUTCMonth(),
               start.getUTCDate()
+            )
+          );
+          event.endTime = new Date(
+            Date.UTC(
+              start.getUTCFullYear(),
+              start.getUTCMonth(),
+              start.getUTCDate() + 1
             )
           );
         }

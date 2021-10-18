@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { CalendarComponent } from 'ionic2-calendar';
 import {ModalController} from '@ionic/angular';
 
@@ -7,7 +7,7 @@ import {ModalController} from '@ionic/angular';
   templateUrl: './cal-modal.page.html',
   styleUrls: ['./cal-modal.page.scss'],
 })
-export class CalModalPage implements OnInit {
+export class CalModalPage implements AfterViewInit {
 
   calendar = {
     mode:'month',
@@ -23,13 +23,13 @@ export class CalModalPage implements OnInit {
     allDay: true
   };
 
-  modalReady = false;
+  modalReady = false; //para que se vea bien el modal
   
   constructor(private modalCtrl:ModalController) { }
 
-  ngOnInit() {
+/*  ngOnInit() {
   }
-
+*/
   ngAfterViewInit(){
     setTimeout(() => {
       this.modalReady = true;
@@ -40,17 +40,17 @@ export class CalModalPage implements OnInit {
     this.modalCtrl.dismiss ({event: this.event})
   }
 
-  volverModal(){
-    this.modalCtrl.dismiss();
-  }
-
-  tituloMeses(titulo){
-    this.vistaTitle = titulo;
+  tituloMeses(title){
+    this.vistaTitle = title;
   }
 
   tiempoElegido(ev){
     console.log ('ev:', ev);
     this.event.startTime = new Date(ev.selectedTime);
+  }
+
+  volverModal(){
+    this.modalCtrl.dismiss();
   }
 
 }
