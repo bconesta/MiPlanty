@@ -159,13 +159,13 @@ void loop() {
         Serial.println(SSID_c);
         Serial.println(PASS_c);
         Serial.println("Intentando");
-        SerialBT.print("TRY");
+        SerialBT.print("TRY$");
         long aux = millis();
         while(WiFi.status() != WL_CONNECTED){
           Serial.print(".");
           delay(500);
           if(millis()-aux > 30000){
-            SerialBT.print("FAIL");
+            SerialBT.print("FAIL$");
             break;
           }
         }
@@ -177,7 +177,7 @@ void loop() {
 
       //CONDICION CAMBIO DE ESTADO
       if(WiFi.status() == WL_CONNECTED){
-        SerialBT.print("CONNECTED");
+        SerialBT.print("CONNECTED$");
         Serial.println("Conectando");
         address = 0;
         EEPROM.writeString(address, SSID);

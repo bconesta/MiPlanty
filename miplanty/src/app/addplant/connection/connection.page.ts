@@ -5,7 +5,7 @@ import { OpenNativeSettings } from '@ionic-native/open-native-settings/ngx';
 import { BluetoothSerial } from '@ionic-native/bluetooth-serial/ngx';
 import { AuthService } from 'src/app/servicios/auth.service';
 import { WifiWizard2 } from '@ionic-native/wifi-wizard-2/ngx';
-import { LoadingController } from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
 
 var found = false;
 var mac = "-"
@@ -41,7 +41,8 @@ export class ConnectionPage implements OnInit {
     private openNativeSettings: OpenNativeSettings,
     private router : Router,
     private passData : PassDataService,
-    public loadingController: LoadingController) { 
+    public loadingController: LoadingController,
+    public alertController : AlertController) { 
     
   }
   back(){
@@ -67,19 +68,6 @@ export class ConnectionPage implements OnInit {
     });
     if(found == true){
       this.SerialBT.connect(mac).subscribe(success=>{
-        this.SerialBT.subscribe('/n').subscribe(data=>{
-          alert(data);
-          if(data == "TRY"){
-            this.presentLoading();
-          }
-          else if(data == "FAIL"){
-            this.loadingController.dismiss();
-          }
-          else if(data == "CONNECTED"){
-            this.loadingController.dismiss();
-            alert('wifi conectado'); 
-          }
-        });
         this.SerialBT.write("SSID");
         (document.getElementById("textoo") as any).style = "display: none;";
         (document.getElementById("boton_sig") as any).style = "display: none;";
@@ -123,7 +111,22 @@ export class ConnectionPage implements OnInit {
     this.authService.getUser().then(user =>{
       this.SerialBT.write(this.SSID + "$" + this.pass + "$" + user['_delegate']['uid'] + "/" + this.passData.getData()['name']);
       console.log(this.SSID + "$" + this.pass + "$" + user['_delegate']['uid'] + "/" + this.passData.getData()['name']);
-      
+      setInterval(()=>{
+        this.SerialBT.subscribe('$').subscribe(data =>{
+          if(data == "TRY$"){
+            this.presentLoading();
+          }
+          else if(data == "FAIL$"){
+            this.loadingController.dismiss();
+            this.presentAlert('Error', 'Los datos ingresados son incorrectos');
+          }
+          else if(data == "CONNECTED$"){
+            this.loadingController.dismiss();
+            this.presentAlert('¡Conectado!', 'Su planty fue agregada con éxito'); 
+            this.router.navigate(['/tabs/tabs/home']);
+          }
+        })
+      }, 1000);
     });
   }
 
@@ -134,9 +137,26 @@ export class ConnectionPage implements OnInit {
       duration: 30000
     });
     await loading.present();
-    loading.dismiss();
     const { role, data } = await loading.onDidDismiss();
     console.log('Loading dismissed!');
+  }
+
+  async presentAlert(header : string, meg : string) {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: header,
+      message: meg,
+      buttons: ['Volver']
+    });
+
+    await alert.present();
+
+    const { role } = await alert.onDidDismiss();
+    //this.router.navigate(['/tabs/tabs/home']);
+  }
+
+  ionAlertDidDismiss(){
+    
   }
 
   ngOnInit() {
