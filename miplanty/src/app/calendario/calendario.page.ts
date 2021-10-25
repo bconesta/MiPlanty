@@ -6,6 +6,7 @@ import { CalendarComponent } from 'ionic2-calendar';
 import { CalModalPage } from '../pages/cal-modal/cal-modal.page';
 import {ModalController} from '@ionic/angular';
 import { formatDate } from '@angular/common';
+import { AngularFireDatabase } from '@angular/fire/compat/database'
 
 
 
@@ -17,7 +18,7 @@ import { formatDate } from '@angular/common';
 export class CalendarioPage implements OnInit {
 
   eventSource = [];
-  vistaTitle:string;
+  vistaTitle: any;
 
   calendar = {
     mode:'month',
@@ -27,7 +28,11 @@ export class CalendarioPage implements OnInit {
   @ViewChild(CalendarComponent) myCal: CalendarComponent;
 
 
-  constructor(private authService : AuthService, private modalCtrl: ModalController, public router : Router) { }
+  constructor(
+    private authService : AuthService,
+    private modalCtrl: ModalController,
+    public router : Router,
+    public db:AngularFireDatabase) { }
 
   backHome(){
     this.router.navigate(['/tabs/tabs/home']);
@@ -55,7 +60,7 @@ export class CalendarioPage implements OnInit {
       backdropDismiss:false,
     });
 
-    await modal.present();
+ await modal.present();
 
     modal.onDidDismiss().then((resultado) => {
       if (resultado.data && resultado.data.event) {
