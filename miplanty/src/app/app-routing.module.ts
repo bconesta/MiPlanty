@@ -44,6 +44,10 @@ const routes: Routes = [
   {
     path: 'cal-modal',
     loadChildren: () => import('./pages/cal-modal/cal-modal.module').then( m => m.CalModalPageModule)
+  },
+  {
+    path: 'grilla',
+    loadChildren: () => import('./grilla/grilla.module').then( m => m.GrillaPageModule)
   }
 
 
