@@ -1,0 +1,28 @@
+
+
+.grilla-superior{
+    height: 20%;
+    position: relative;
+    .img{
+        position: absolute;
+        bottom: 0;
+    }
+}
+
+.titulo-plant{
+    color: green;
+    font-family: monospace;
+    font-weight: 800;
+    font-size: 40px;
+}
+
+.grilla-media{
+    height: 8%;
+    display:flex;
+    align-items: center;
+    justify-content:center;
+}
+
+.grilla-inferior{
+    height: 72%;
+}
