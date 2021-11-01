@@ -8,13 +8,25 @@
 
 <ion-content>
   <div class="grilla-superior">
-    <ion-grid>
-      <ion-row>
-        <ion-col size="8">
+    <ion-grid style="height: 100%;">
+      <ion-row style="height: 100%;">
+        <ion-col size="8" class="col-izq">
           <h2 class="titulo-plant">PLANTAS</h2>
-          <img src="../../assets/imgs/planta-izq.png" height="80px">
+          <ion-grid style="height: 80%;">
+            <ion-row style="height: 100%;">
+              <ion-col size="4">
+                <img class="planta3" src="../../assets/imgs/planta3.png">
+              </ion-col>
+              <ion-col size="4">
+                <img class="planta1" src="../../assets/imgs/planta1.png">
+              </ion-col>
+              <ion-col size="4">
+                <img class="planta2" src="../../assets/imgs/planta2.png">
+              </ion-col>
+            </ion-row>
+          </ion-grid>
         </ion-col>
-        <ion-col size="4">
+        <ion-col size="4" class="col-der">
           <img src="../../assets/imgs/planta-der.png" height="120">
         </ion-col>
       </ion-row>
@@ -31,29 +43,33 @@
   </div>
   <div class="grilla-inferior">
    <ion-grid>
-     <ion-row>
-       <ion-col >
-        <div>prueba</div>
+     <ion-row class="primera-fila">
+       <ion-col>
+        <div>
+          <ion-card></ion-card>
+        </div>
        </ion-col>
        <ion-col>
-        <div>prueba 2</div>
+        <div>
+          <ion-card></ion-card>
+        </div>
       </ion-col>
      </ion-row>
-     <ion-row>
+     <ion-row class="segunda-fila">
       <ion-col>
-        hola
+        <ion-card></ion-card>
       </ion-col>
       <ion-col>
-       hola 
-     </ion-col>
+        <ion-card></ion-card>
+      </ion-col>
     </ion-row>
-    <ion-row>
+    <ion-row class="tercera-fila">
       <ion-col>
-        hola
+        <ion-card></ion-card>
       </ion-col>
       <ion-col>
-        hola
-     </ion-col>
+        <ion-card></ion-card>
+      </ion-col>
     </ion-row>
    </ion-grid> 
   </div>

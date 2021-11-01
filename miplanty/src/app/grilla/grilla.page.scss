@@ -1,20 +1,52 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap');
 
 .grilla-superior{
     height: 20%;
+}
+
+.col-der{
     position: relative;
-    .img{
+    img{
         position: absolute;
-        bottom: 0;
+        bottom: 5%;
+        height: 120px;
     }
 }
 
+.planta3{
+    margin-right: 25px;
+}
+
+.planta1{
+    padding-right: 5px;
+}
+
+.planta2{
+    margin-right: 5px;
+}
+
+.col-izq{
+    position: relative;
+    img{
+        position: absolute;
+        bottom: 0%;
+        height: 65px;
+    }
+
+}
 .titulo-plant{
     color: green;
+    position: absolute;
+    top:5%;
+    margin: 0px !important;
     font-family: monospace;
+    left:8%;
+    text-decoration: underline;
     font-weight: 800;
     font-size: 40px;
+    letter-spacing: 1px;
 }
+
 
 .grilla-media{
     height: 8%;
