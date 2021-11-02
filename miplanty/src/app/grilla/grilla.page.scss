@@ -2,6 +2,7 @@
 
 .grilla-superior{
     height: 20%;
+    background-color: rgb(204, 231, 163);
 }
 
 .col-der{
@@ -14,15 +15,12 @@
 }
 
 .planta3{
-    margin-right: 25px;
 }
 
 .planta1{
-    padding-right: 5px;
 }
 
 .planta2{
-    margin-right: 5px;
 }
 
 .col-izq{
@@ -44,7 +42,7 @@
     text-decoration: underline;
     font-weight: 800;
     font-size: 40px;
-    letter-spacing: 1px;
+    letter-spacing: 8px;
 }
 
 
@@ -55,6 +53,22 @@
     justify-content:center;
 }
 
-.grilla-inferior{
-    height: 72%;
+ion-card{
+    border:0.25px solid rgb(138, 138, 138);
+    //box-shadow: 1px 1px 1px 0.5px rgb(138, 138, 138);
+    img{
+        padding:10px;
+    }
+}
+ion-card-header{
+    background-color: rgb(204, 231, 163);
+}
+
+.titulo-card{
+    font-family: monospace;
+    font-size: 25px;
+    font-weight: 700;
+    width: 100%;
+    color:green;
+    text-align: center;
 }
