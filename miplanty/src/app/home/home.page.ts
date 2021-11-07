@@ -111,7 +111,7 @@ export class HomePage implements OnInit {
     
   }
   ionViewDidEnter(){
-    this.db.database.ref('/Users/' + this.authService.uid + '/').on('value', (snapshot)=> {
+    this.db.database.ref('/Users/' + this.authService.uid + '/Plantas/').on('value', (snapshot)=> {
       this.plantys = snapshot.val();
       this.getPlantys();
     });
