@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Denk+One&display=swap');
 
 .grilla-superior{
     height: 20%;
@@ -10,41 +11,42 @@
     img{
         position: absolute;
         bottom: 5%;
+        left:20%;
         height: 120px;
     }
 }
 
-.planta3{
-}
-
-.planta1{
-}
-
-.planta2{
-}
-
 .col-izq{
     position: relative;
-    img{
-        position: absolute;
-        bottom: 0%;
-        height: 65px;
-    }
-
 }
+
 .titulo-plant{
-    color: green;
+    color: rgb(22, 160, 69);
     position: absolute;
-    top:5%;
+    top:10%;
     margin: 0px !important;
-    font-family: monospace;
-    left:8%;
-    text-decoration: underline;
+    font-family: 'Denk One', sans-serif;
+    left:12%;
     font-weight: 800;
     font-size: 40px;
     letter-spacing: 8px;
 }
 
+.imagenes-grilla1{
+    position: absolute;
+    bottom: 10%;
+    display: flex;
+    height: 50%;
+    bottom: 0%;
+    left:12%;
+    img{
+        height: 48px;
+        padding:1px;
+    }
+}
+.imagenes-grilla2{
+    flex: 25%;
+}
 
 .grilla-media{
     height: 8%;
@@ -69,6 +71,6 @@ ion-card-header{
     font-size: 25px;
     font-weight: 700;
     width: 100%;
-    color:green;
+    color:rgb(22, 160, 69);
     text-align: center;
 }
