@@ -34,23 +34,13 @@ export class GrillaPage implements OnInit {
 ngAfterViewInit(){
   this.db.database.ref('/Users/' + this.authService.uid + '/Plantas/').on('value', (snapshot)=> {
     this.lectura = snapshot.val();
+    //this.cantidad = Object.entries(this.lectura).length;
+    //this.nombre = Object.entries(this.lectura)[this.selector][0];
+    console.log('la lecrua es:' + this.lectura);
   })
   var d1 = this.elementRef.nativeElement.querySelector('.one');
-  d1.insertAdjacentHTML ('beforeend', '<ion-col><ion-card><img src="../../assets/imgs/phomeCENTRAL.png"><ion-card-header><ion-card-title class="titulo-card"><label>' + this.lectura + '</label></ion-card-title></ion-card-header></ion-card></ion-col>');
+  d1.insertAdjacentHTML ('beforeend', '<ion-col><ion-card><img src="../../assets/imgs/phomeCENTRAL.png"><ion-card-header><ion-card-title class="titulo-card"><label>' + this.nombre + '</label></ion-card-title></ion-card-header></ion-card></ion-col>');
 }
-
-    getGrilla(){
-      this.nombre = Object.entries(this.plantys)[this.selector][0];
-
-      this.nombregrilla = this.nombre;
-    }
-
-    ionViewDidEnter(){
-      this.db.database.ref('/Users/' + this.authService.uid + '/Plantas/').on('value', (snapshot)=> {
-        this.plantys = snapshot.val();
-        this.getGrilla();
-      });
-    }
 
   ngOnInit() {
   }
