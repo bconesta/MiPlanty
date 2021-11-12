@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../servicios/auth.service';
 import { ToastController } from '@ionic/angular';
+import { LanguageService } from '../servicios/language.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
@@ -12,7 +13,7 @@ export class RegisterPage implements OnInit {
   mail : string;
   pass : string;
   pass_con : string;
-  constructor(private router : Router, private authService : AuthService, public toastController : ToastController) { }
+  constructor(private router : Router, private authService : AuthService, public toastController : ToastController, private leng : LanguageService) { }
 
   back(){
     this.router.navigate(['']);
@@ -40,7 +41,21 @@ export class RegisterPage implements OnInit {
     toast.present();
   }
 
+
+  titulo : string;
+  namelabel : string;
+  maillabel : string;
+  passlabel : string;
+  pass2label : string;
+  sendlabel : string;
+
   ngOnInit() {
+    this.titulo = this.leng.language[this.leng.value].RegisterPage.titulo;
+    this.namelabel = this.leng.language[this.leng.value].RegisterPage.namelabel;
+    this.maillabel = this.leng.language[this.leng.value].RegisterPage.maillabel;
+    this.passlabel = this.leng.language[this.leng.value].RegisterPage.passlabel;
+    this.pass2label = this.leng.language[this.leng.value].RegisterPage.pass2label;
+    this.sendlabel = this.leng.language[this.leng.value].RegisterPage.sendlabel;
   }
 
 }

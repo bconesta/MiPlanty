@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'
 import { AuthService } from '../servicios/auth.service';
+import { LanguageService } from '../servicios/language.service';
 
 @Component({
   selector: 'app-forgotten-password',
@@ -9,7 +10,9 @@ import { AuthService } from '../servicios/auth.service';
 })
 export class ForgottenPasswordPage implements OnInit {
   mail : string;
-  constructor(public router : Router, private authService : AuthService) { }
+
+
+  constructor(public router : Router, private authService : AuthService, private leng : LanguageService) { }
   back(){
     this.router.navigate(['/']);
   }
@@ -25,7 +28,18 @@ export class ForgottenPasswordPage implements OnInit {
     
   }
 
-  ngOnInit() {
-  }
 
+  titulo : string;
+  userlabel : string;
+  sendlabel : string;
+  ngOnInit() {
+    this.titulo = this.leng.language[this.leng.value].FPPage.titulo;
+    this.userlabel = this.leng.language[this.leng.value].FPPage.userlabel;
+    this.sendlabel = this.leng.language[this.leng.value].FPPage.sendlabel;
+  }
+  ionViewDidEnter(){
+    this.titulo = this.leng.language[this.leng.value].FPPage.titulo;
+    this.userlabel = this.leng.language[this.leng.value].FPPage.userlabel;
+    this.sendlabel = this.leng.language[this.leng.value].FPPage.sendlabel;
+  }
 }

@@ -6,6 +6,8 @@
     --background:rgb(177, 248, 138);
     height: 60px;
     position: relative;
+    display: flex;
+    text-align: center;
 }
 
 .salir-settings{
@@ -20,9 +22,6 @@
 .titulo-settings{
     color:black;
     font-weight: 700;
-    position: absolute;
-    left:23%;
-    bottom:20%;
     font-size: 25px;
     font-family:monospace;
 }

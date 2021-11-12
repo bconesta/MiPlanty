@@ -1,14 +1,14 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar class="toolbar-home">
     <ion-buttons slot="start">
-      <ion-button (click)="back()"><ion-icon name="arrow-back-outline"></ion-icon></ion-button>
+      <ion-button color="light" (click)="back()"><ion-icon name="arrow-back-outline"></ion-icon></ion-button>
     </ion-buttons>
-    <ion-title>Añadir nueva planta</ion-title>
+    <ion-title class="toolbar-logo"><img style="height: 40px;" alt="logo" src="../../../assets/imgs/logo_sinfondo.png"></ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  
+  <h4>Añadir nueva planta</h4>
   <ion-item class="nombre">
     <ion-label position="floating">Nombre de la planta</ion-label>
     <ion-input [(ngModel)]="name"></ion-input>

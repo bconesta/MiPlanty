@@ -11,6 +11,10 @@ const routes: Routes = [
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
   {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
     path: 'home',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
@@ -33,7 +37,8 @@ const routes: Routes = [
   {
     path: 'add/connection',
     loadChildren: () => import('./addplant/connection/connection.module').then( m => m.ConnectionPageModule)
-  },  {
+  },
+  {
     path: 'options',
     loadChildren: () => import('./addplant/options/options.module').then( m => m.OptionsPageModule)
   },
