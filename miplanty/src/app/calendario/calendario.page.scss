@@ -113,7 +113,9 @@
     --box-shadow: none;
     height: 50px;
     width: 50px;
-    ion-icon{
-        color: rgb(46, 134, 193);
-    }
+    --border-radius: 100%;
+}
+.icon-add{
+    color:white;
+    font-weight: bolder;
 }
