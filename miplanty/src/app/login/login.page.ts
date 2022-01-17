@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../servicios/auth.service'
 import { Router } from '@angular/router'
-import { BluetoothSerial } from '@ionic-native/bluetooth-serial/ngx';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { LanguageService } from '../servicios/language.service';
 

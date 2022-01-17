@@ -54,8 +54,7 @@ export class ConnectionPage implements OnInit {
     //console.log(this.obje['type'])
   }
   opbt(){
-    //this.openNativeSettings.open("bluetooth");
-    this.presentLoading();
+    this.openNativeSettings.open("bluetooth");
   }
   next(){
     this.SerialBT.list().then(function(devices) {
