@@ -28,7 +28,7 @@ export class SettingsPage implements OnInit {
   }
 
   popupAyuda(){
-    alert();
+    this.router.navigate(['/init']);
   }
 
   //test git

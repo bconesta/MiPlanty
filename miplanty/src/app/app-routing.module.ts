@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./init/init.module').then( m => m.InitPageModule)
   },
   {
     path: 'login',
@@ -53,7 +53,12 @@ const routes: Routes = [
   {
     path: 'grilla',
     loadChildren: () => import('./grilla/grilla.module').then( m => m.GrillaPageModule)
+  },
+  {
+    path: 'init',
+    loadChildren: () => import('./init/init.module').then( m => m.InitPageModule)
   }
+
 
 
 
