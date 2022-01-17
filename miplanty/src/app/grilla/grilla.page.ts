@@ -24,7 +24,7 @@ export class GrillaPage implements OnInit {
     cantidad : number;
     selector : number = 0;
   
-    nombre : string;
+    nombre : string = "Planta";
     tipo : string;
     hum : any;
     luz: any;
@@ -54,21 +54,31 @@ export class GrillaPage implements OnInit {
 */
 
 
-ngAfterViewInit(){
-  this.db.database.ref('/Users/').on('value', (snapshot)=> {
-    this.lectura = snapshot.val();
-    console.log ('prueba2:' + this.lectura);
-  })
-  this.db.database.ref('/Users/ ' + this.authService.uid + '/Plantas/').on('value', (snapshot)=> {
+ionViewDidEnter(){
+  /*this.db.database.ref('/Users/' + this.authService.uid).on('value', (snapshot)=> {
   
     this.lectura = snapshot.val();
     //this.cantidad = Object.entries(this.lectura).length;
     //this.nombre = Object.entries(this.lectura)[this.selector][0];
     console.log('la lecrua es:' + this.lectura);
-  })
+  }) */
+
+  this.db.database.ref('/Users/' + this.authService.uid).on('value', (snapshot)=> {
+    this.plantys = snapshot.val();
+    console.log(this.plantys);
+    this.addGrid();
+  });
 
   var d1 = this.elementRef.nativeElement.querySelector('.one');
   d1.insertAdjacentHTML ('beforeend', '<ion-col><ion-card><img src="../../assets/imgs/phomeCENTRAL.png"><ion-card-header><ion-card-title class="titulo-card"><label>' + this.nombre + '</label></ion-card-title></ion-card-header></ion-card></ion-col>');
+}
+
+addGrid(){
+  var d1 = this.elementRef.nativeElement.querySelector('.one');
+  console.log(Object.entries(this.plantys));
+  for(let i=0; i<Object.entries(this.plantys).length; i++){
+    d1.insertAdjacentHTML ('beforeend', '<ion-col><ion-card><img src="../../assets/imgs/phomeCENTRAL.png"><ion-card-header><ion-card-title class="titulo-card"><label>' + Object.entries(this.plantys)[i][0] + '</label></ion-card-title></ion-card-header></ion-card></ion-col>');
+  }
 }
 
 /*
