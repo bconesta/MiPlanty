@@ -27,12 +27,14 @@ FirebaseData fbdo;
 #define EEPROM_SIZE 512
 String SSID = "-";
 String PASS = "-";
+
 String ruta_fire = "-";
 String inst = "-";
 
 int address, ad_aux = 0;
 float temp, hum, luz = 0;
 bool btEn, instChanged, SSID_select, PASS_select, SSID_changed, PASS_changed = false;
+
 
 void setup() {
   Serial.begin(115200);
