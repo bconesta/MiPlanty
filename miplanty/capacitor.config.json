@@ -1,6 +1,6 @@
 {
-	"appId": "io.ionic.starter",
-	"appName": "miplanty",
+	"appId": "com.conesta.planty",
+	"appName": "Mi Planty",
 	"webDir": "www",
 	"bundledWebRuntime": false
 }
