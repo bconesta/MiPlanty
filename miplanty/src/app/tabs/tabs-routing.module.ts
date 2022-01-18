@@ -32,8 +32,8 @@ const routes: Routes = [
         loadChildren: () => import('../calendario/calendario.module').then( m => m.CalendarioPageModule)
       },
       {
-        path: 'tab3',
-        loadChildren: () => import('../tab3/tab3.module').then(m => m.Tab3PageModule)
+        path: 'wip',
+        loadChildren: () => import('../wip/wip.module').then(m => m.WipPageModule)
       },
       {
         path: '',
