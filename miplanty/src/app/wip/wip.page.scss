@@ -1,0 +1,22 @@
+.toolbar-home {
+    --background:rgb(22, 160, 69);
+    height: 60px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.texto{
+    text-align: center;
+    height: 100%;
+    margin: 0 5%;
+    h1{
+        font-weight: bold;
+        font-size: 34px;
+        margin-top: 50%;
+    }
+    img{
+        width: 20%;
+        border-radius: 10%;
+    }
+}

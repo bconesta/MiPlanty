@@ -57,7 +57,11 @@ const routes: Routes = [
   {
     path: 'init',
     loadChildren: () => import('./init/init.module').then( m => m.InitPageModule)
+  },  {
+    path: 'wip',
+    loadChildren: () => import('./wip/wip.module').then( m => m.WipPageModule)
   }
+
 
 
 
