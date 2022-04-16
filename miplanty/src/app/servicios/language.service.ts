@@ -38,7 +38,7 @@ export class LanguageService {
         'label3' : 'Delete',
         'label4' : 'Notifications',
         'titulo2' : 'HELP',
-        'label5' : 'Help',
+        'label5' : 'Creators',
         'label6' : 'Comments',
         'titulo3' : 'ACOUNT',
         'label7' : 'Data',
@@ -47,6 +47,12 @@ export class LanguageService {
       },
       'HomePage' : {
         'logout' : 'EXIT'
+      },
+      'DataPage' : {
+        'titulo' : 'Account data',
+        'label1' : 'E-mail',
+        'label2' : 'Creation date',
+        'label3' : 'Last log in date'
       }
     },
     
@@ -79,7 +85,7 @@ export class LanguageService {
         'label3' : 'Borrar',
         'label4' : 'Notificaciones',
         'titulo2' : 'AYUDA',
-        'label5' : 'Ayuda',
+        'label5' : 'Creadores',
         'label6' : 'Comentarios',
         'titulo3' : 'CUENTA',
         'label7' : 'Datos',
@@ -88,6 +94,12 @@ export class LanguageService {
       },
       'HomePage' : {
         'logout' : 'SALIR'
+      },
+      'DataPage' : {
+        'titulo' : 'Datos de la cuenta',
+        'label1' : 'Correo electrónico',
+        'label2' : 'Fecha de creación',
+        'label3' : 'Último inicio de sesión'
       }
     }
   }

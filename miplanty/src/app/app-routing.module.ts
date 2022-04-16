@@ -60,6 +60,14 @@ const routes: Routes = [
   },  {
     path: 'wip',
     loadChildren: () => import('./wip/wip.module').then( m => m.WipPageModule)
+  },
+  {
+    path: 'datos',
+    loadChildren: () => import('./settingspages/datos/datos.module').then( m => m.DatosPageModule)
+  },
+  {
+    path: 'info',
+    loadChildren: () => import('./settingspages/info/info.module').then( m => m.InfoPageModule)
   }
 
 

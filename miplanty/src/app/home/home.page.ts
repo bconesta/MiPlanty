@@ -74,7 +74,7 @@ export class HomePage implements OnInit {
     this.cantidad = Object.entries(this.plantys).length;
     this.nombre = Object.entries(this.plantys)[this.selector][0];
     
-    this.hum = 31.2;
+    this.hum = Object.entries(this.plantys)[this.selector][1]['hum'];
     document.getElementById("humedadtext").innerHTML = this.hum.toFixed(1) + "%";
     (document.getElementById("humedad") as any).value  = this.hum/100;
     (document.getElementById("icono_agua") as any).style = "left:" + (0.6*this.hum+5) + "%;";
