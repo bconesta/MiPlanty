@@ -118,6 +118,7 @@ export class HomePage implements OnInit {
   ngOnInit() {
     //this.lenguaje = this.leng.getLanguage();
     this.logout = this.leng.language[this.leng.value].HomePage.logout;
+    console.log(document.querySelector('body').className);
   }
   ionViewDidEnter(){
     this.db.database.ref('/Users/' + this.authService.uid).on('value', (snapshot)=> {
