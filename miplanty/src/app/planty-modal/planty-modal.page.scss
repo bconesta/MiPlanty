@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+
+
+.toolbar-home {
+    --background:rgb(22, 160, 69);
+    height: 60px;
+    position: relative;
+    display: flex;
+    text-align: center;
+  }
+
+.salir-home{
+    position: absolute;
+    left: 2%;
+    top:25%;
+    ion-button{
+        font-size: 20px;
+        font-family:monospace;
+        font-weight:500;
+    }
+}
+
+.toolbar-logo{
+    margin-top: 5px;
+    font-weight: bold;
+    color: white;
+}
+
+.tittle{
+    margin-left: 5%;
+    width: 65%;
+
+    h1{
+        height: 80px;
+        font-size: 60px;
+        color: rgb(22, 160, 69);
+        font-weight: bold;
+        font-family: 'Indie Flower', cursive;
+        overflow: hidden;
+        -webkit-line-clamp: 1;
+        display: -webkit-box;
+    }
+}
+
+.info{
+    margin-left: 5%;
+    h4{
+        font-family: 'Indie Flower', cursive; 
+        font-weight: 500;
+    }
+}
+
+.image{
+    position: absolute;
+    width: 60%;
+    right: 0;
+    top: 70px;
+}

@@ -68,6 +68,10 @@ const routes: Routes = [
   {
     path: 'info',
     loadChildren: () => import('./settingspages/info/info.module').then( m => m.InfoPageModule)
+  },
+  {
+    path: 'planty-modal',
+    loadChildren: () => import('./planty-modal/planty-modal.module').then( m => m.PlantyModalPageModule)
   }
 
 

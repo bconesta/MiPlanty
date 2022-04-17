@@ -1,10 +1,3 @@
-<!--<ion-header>
-  <ion-toolbar>
-    <ion-title>grilla</ion-title>
-    <img>
-    <img>
-  </ion-toolbar>
-</ion-header>-->
 
 <ion-content>
   <div class="grilla-superior">
@@ -35,63 +28,13 @@
     </ion-buttons>
   </div>
   <div class="grilla-inferior">
-   <ion-grid>
-     <ion-row class="one" #one>
-       <ion-col>
-        <ion-card>
-          <img src="../../assets/imgs/phomeCACTUS.png">
-          <ion-card-header>
-            <ion-card-title class="titulo-card"><label> {{nombregrilla}}</label></ion-card-title>
-          </ion-card-header>
-        </ion-card>
-       </ion-col>
-       <!--
-       <ion-col>
-        <ion-card>
+    
+        <ion-card class="card" *ngFor="let planty of plantys;" (click)="presentModal(planty)">
           <img src="../../assets/imgs/phomeCENTRAL.png">
           <ion-card-header>
-            <ion-card-title class="titulo-card"><label> {{nombregrilla}}</label></ion-card-title>
+            <ion-card-title class="titulo-card"><label>{{planty[0]}}</label></ion-card-title>
           </ion-card-header>
         </ion-card>
-      </ion-col>
-     </ion-row>
-     <ion-row class="segunda-fila">
-      <ion-col>
-        <ion-card>
-          <img src="../../assets/imgs/phomeLUZ.png">
-          <ion-card-header>
-            <ion-card-title class="titulo-card"><label> {{nombregrilla}}</label></ion-card-title>
-          </ion-card-header>
-        </ion-card>
-      </ion-col>
-      <ion-col>
-        <ion-card>
-          <img src="../../assets/imgs/phomeSOMBRA.png">
-          <ion-card-header>
-            <ion-card-title class="titulo-card"><label> {{nombregrilla}}</label></ion-card-title>
-          </ion-card-header>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-    <ion-row class="tercera-fila">
-      <ion-col>
-        <ion-card>
-          <img src="../../assets/imgs/phomeX.png">
-          <ion-card-header>
-            <ion-card-title class="titulo-card"><label> {{nombregrilla}}</label></ion-card-title>
-          </ion-card-header>
-        </ion-card>
-      </ion-col>
-      <ion-col>
-        <ion-card>
-          <img src="../../assets/imgs/phomeX2.png">
-          <ion-card-header>
-            <ion-card-title class="titulo-card"><label> {{nombregrilla}}</label></ion-card-title>
-          </ion-card-header>
-        </ion-card>
-      </ion-col>
-      -->
-    </ion-row>
-   </ion-grid> 
+  
   </div>
 </ion-content>
