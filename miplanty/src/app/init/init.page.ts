@@ -24,3 +24,4 @@ export class InitPage implements OnInit {
   }
 
 }
+//v1.0

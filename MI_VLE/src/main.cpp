@@ -15,3 +15,4 @@ void loop() {
   esp_sleep_enable_timer_wakeup(5000); //TIME IN uS
   esp_deep_sleep_start();
 }
+//v1.0
