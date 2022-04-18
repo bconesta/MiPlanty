@@ -16,14 +16,14 @@ export class RegisterPage implements OnInit {
   constructor(private router : Router, private authService : AuthService, public toastController : ToastController, private leng : LanguageService) { }
 
   back(){
-    this.router.navigate(['']);
+    this.router.navigate(['login']);
   }
 
   r_send(){
     if(this.pass == this.pass_con){
       this.authService.signup(this.mail, this.pass).then(resolve => {
         alert("Usuario creado con éxito");
-        this.router.navigate(['']);
+        this.router.navigate(['login']);
       }, rejected => {
         this.toasterror("Los datos son incorrectos o ya fueron utilizados");
       });
