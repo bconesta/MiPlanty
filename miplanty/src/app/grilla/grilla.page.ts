@@ -4,6 +4,7 @@ import { Router } from '@angular/router'
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { ModalController } from '@ionic/angular';
 import { PlantyModalPage } from '../planty-modal/planty-modal.page';
+import { LanguageService } from '../servicios/language.service';
 
 @Component({
   selector: 'app-grilla',
@@ -17,13 +18,14 @@ export class GrillaPage implements OnInit {
     public router : Router,
     public onValue : AngularFireDatabase,
     public db:AngularFireDatabase,
-    public modalController : ModalController) { 
+    public modalController : ModalController,
+    public leng : LanguageService) { 
     }
 
     plantys : any = Object.entries(this.authService.plantys);
     cantidad : number;
     selector : number = 0;
-  
+    
     nombre : string = "Planta";
     tipo : string;
     hum : any;
@@ -68,31 +70,19 @@ export class GrillaPage implements OnInit {
 */
 
 
-ionViewDidEnter(){
-  /*this.db.database.ref('/Users/' + this.authService.uid).on('value', (snapshot)=> {
-  
-    this.lectura = snapshot.val();
-    //this.cantidad = Object.entries(this.lectura).length;
-    //this.nombre = Object.entries(this.lectura)[this.selector][0];
-    console.log('la lecrua es:' + this.lectura);
-  }) */
+  ionViewDidEnter(){
+    this.tittle = this.leng.language[this.leng.value].GridPage.titulo;
+    this.button1 = this.leng.language[this.leng.value].GridPage.boton1;
+    this.button2 = this.leng.language[this.leng.value].GridPage.boton2;
+    this.button3 = this.leng.language[this.leng.value].GridPage.boton3;
+  }
 
-
-}
-
-/*
-  ngAfterViewInit(){
-  onValue(this.db.database.ref( '/Users/ ' + this.authService.uid + '/Plantas/'), (snapshot)=>
-  {
-    console.log(snapshot.val());
-
-  })
-    */
-
-
-
+  tittle : string;
+  button1 : string;
+  button2 : string;
+  button3 : string;
   ngOnInit() {
-
+    
   }
 
 }
