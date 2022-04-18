@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar class="toolbar-home">
+    <ion-buttons slot="start" class="salir-home">
+      <ion-button (click)="dismiss()" style="color: white;"><ion-icon name="arrow-back-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title slot="start" class="toolbar-logo">{{titulo}}</ion-title>
+    <ion-tittle slot="end"><img src="" alt=""></ion-tittle>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <div class="tittle">
+    <h1>{{obj[0]}}</h1>
+  </div>
+  <div class="info">
+    <h4>{{tipo}}</h4>
+    <h4>{{hum}}</h4>
+    <h4>{{luz}}</h4>
+    <h4>{{temp}}</h4>
+  </div>
+  <div class="image">
+    <img src={{ruta}} alt="">
+  </div>
+  <div class="image-back"></div>
+  <div class="back-left"></div>
+  <div class="button">
+    <ion-button (click)="delete()" color="danger" expand="block" shape="round" size="default">
+      <ion-icon name="trash-outline"></ion-icon>
+    </ion-button>
+  </div>
+</ion-content>

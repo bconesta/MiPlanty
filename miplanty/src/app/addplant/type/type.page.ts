@@ -4,6 +4,7 @@ import { ModalController } from '@ionic/angular';
 import { OptionsPage } from '../options/options.page';
 import { PassDataService } from 'src/app/servicios/pass-data.service';
 import { ToastController } from '@ionic/angular';
+import { LanguageService } from 'src/app/servicios/language.service';
 
 @Component({
   selector: 'app-type',
@@ -18,7 +19,8 @@ export class TypePage implements OnInit {
     private router : Router,
     public modalController: ModalController,
     private passData : PassDataService,
-    private toastController : ToastController
+    private toastController : ToastController,
+    public leng : LanguageService
     ) { }
   back(){
     this.router.navigate(['tabs/tabs/home']);
@@ -26,7 +28,7 @@ export class TypePage implements OnInit {
   
   async toasterror(){
     const toast = await this.toastController.create({
-      message: 'Complete todos los datos para continuar :)',
+      message: this.leng.language[this.leng.value].TypePage.toast,
       duration: 2000
     });
     toast.present();
@@ -56,7 +58,20 @@ export class TypePage implements OnInit {
     return await modal.present();
   }
 
-  
+  tittle : string;
+  label1 : string;
+  label2 : string;
+  label3 : string; 
+  button : string;
+
+  ionViewDidEnter(){
+    this.tittle = this.leng.language[this.leng.value].TypePage.titulo;
+    this.label1 = this.leng.language[this.leng.value].TypePage.label1;
+    this.label2 = this.leng.language[this.leng.value].TypePage.label2;
+    this.label3 = this.leng.language[this.leng.value].TypePage.label3;
+    this.button = this.leng.language[this.leng.value].TypePage.boton;
+  }
+
   ngOnInit() {
   }
 

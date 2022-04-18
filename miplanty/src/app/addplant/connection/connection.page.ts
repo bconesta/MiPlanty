@@ -6,6 +6,7 @@ import { BluetoothSerial } from '@ionic-native/bluetooth-serial/ngx';
 import { AuthService } from 'src/app/servicios/auth.service';
 import { WifiWizard2 } from '@ionic-native/wifi-wizard-2/ngx';
 import { AlertController, LoadingController } from '@ionic/angular';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
 
 var found = false;
 var mac = "-"
@@ -42,7 +43,8 @@ export class ConnectionPage implements OnInit {
     private router : Router,
     private passData : PassDataService,
     public loadingController: LoadingController,
-    public alertController : AlertController) { 
+    public alertController : AlertController,
+    public db : AngularFireDatabase) { 
     
   }
   back(){
@@ -120,6 +122,7 @@ export class ConnectionPage implements OnInit {
             this.presentAlert('Error', 'Los datos ingresados son incorrectos');
           }
           else if(data == "CONNECTED$"){
+            this.db.database.ref('Users/' + user['_delegate']['uid'] + "/" + this.passData.getData()['name'] + '/tipo').set(this.passData.getData()['type']);
             this.loadingController.dismiss();
             this.presentAlert('¡Conectado!', 'Su planty fue agregada con éxito'); 
             this.router.navigate(['/tabs/tabs/home']);

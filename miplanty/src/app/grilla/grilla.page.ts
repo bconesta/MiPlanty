@@ -1,8 +1,10 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { AuthService } from '../servicios/auth.service'
 import { Router } from '@angular/router'
-import {onValue} from 'firebase/database'
-import { AngularFireDatabase, snapshotChanges } from '@angular/fire/compat/database';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
+import { ModalController } from '@ionic/angular';
+import { PlantyModalPage } from '../planty-modal/planty-modal.page';
+import { LanguageService } from '../servicios/language.service';
 
 @Component({
   selector: 'app-grilla',
@@ -10,20 +12,20 @@ import { AngularFireDatabase, snapshotChanges } from '@angular/fire/compat/datab
   styleUrls: ['./grilla.page.scss'],
 })
 export class GrillaPage implements OnInit {
-
+  modal: HTMLElement;
   constructor(
     private authService : AuthService,
     public router : Router,
     public onValue : AngularFireDatabase,
     public db:AngularFireDatabase,
-    private elementRef: ElementRef) { 
-      
+    public modalController : ModalController,
+    public leng : LanguageService) { 
     }
 
-    plantys : any;
+    plantys : any = Object.entries(this.authService.plantys);
     cantidad : number;
     selector : number = 0;
-  
+    
     nombre : string = "Planta";
     tipo : string;
     hum : any;
@@ -32,6 +34,20 @@ export class GrillaPage implements OnInit {
     lectura : any;
 
     public nombregrilla = "PlantaX";
+
+    async presentModal(planty : any) {
+      console.log(planty);
+      const modal = await this.modalController.create({
+        component: PlantyModalPage,
+        cssClass: 'my-custom-class',
+        componentProps: {'obj' : planty}
+      });
+      return await modal.present();
+    }
+
+    card(lol : any){
+      console.log(lol);
+    }
 
 /*
     getCards(){
@@ -54,45 +70,19 @@ export class GrillaPage implements OnInit {
 */
 
 
-ionViewDidEnter(){
-  /*this.db.database.ref('/Users/' + this.authService.uid).on('value', (snapshot)=> {
-  
-    this.lectura = snapshot.val();
-    //this.cantidad = Object.entries(this.lectura).length;
-    //this.nombre = Object.entries(this.lectura)[this.selector][0];
-    console.log('la lecrua es:' + this.lectura);
-  }) */
-
-  this.db.database.ref('/Users/' + this.authService.uid).on('value', (snapshot)=> {
-    this.plantys = snapshot.val();
-    console.log(this.plantys);
-    this.addGrid();
-  });
-
-  var d1 = this.elementRef.nativeElement.querySelector('.one');
-  d1.insertAdjacentHTML ('beforeend', '<ion-col><ion-card><img src="../../assets/imgs/phomeCENTRAL.png"><ion-card-header><ion-card-title class="titulo-card"><label>' + this.nombre + '</label></ion-card-title></ion-card-header></ion-card></ion-col>');
-}
-
-addGrid(){
-  var d1 = this.elementRef.nativeElement.querySelector('.one');
-  console.log(Object.entries(this.plantys));
-  for(let i=0; i<Object.entries(this.plantys).length; i++){
-    d1.insertAdjacentHTML ('beforeend', '<ion-col><ion-card><img src="../../assets/imgs/phomeCENTRAL.png"><ion-card-header><ion-card-title class="titulo-card"><label>' + Object.entries(this.plantys)[i][0] + '</label></ion-card-title></ion-card-header></ion-card></ion-col>');
+  ionViewDidEnter(){
+    this.tittle = this.leng.language[this.leng.value].GridPage.titulo;
+    this.button1 = this.leng.language[this.leng.value].GridPage.boton1;
+    this.button2 = this.leng.language[this.leng.value].GridPage.boton2;
+    this.button3 = this.leng.language[this.leng.value].GridPage.boton3;
   }
-}
 
-/*
-  ngAfterViewInit(){
-  onValue(this.db.database.ref( '/Users/ ' + this.authService.uid + '/Plantas/'), (snapshot)=>
-  {
-    console.log(snapshot.val());
-
-  })
-    */
-
-
-
+  tittle : string;
+  button1 : string;
+  button2 : string;
+  button3 : string;
   ngOnInit() {
+    
   }
 
 }

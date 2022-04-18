@@ -205,6 +205,8 @@ void loop() {
         Firebase.reconnectWiFi(true);
         SerialBT.end();
         btEn = false;
+        delay(1000);
+        ESP.restart();
         //EEPROM.end();
       }
     break;

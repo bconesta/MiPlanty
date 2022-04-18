@@ -1,8 +1,7 @@
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { Injectable } from '@angular/core';
-import { AngularFireAuth, PERSISTENCE } from '@angular/fire/compat/auth';
-import * as firebase from 'firebase/app';
-import { first } from 'rxjs/operators';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +11,19 @@ export class AuthService {
   uiduser : any;
   uid : any;
   uidnew : any;
+  email : any;
+  creationTime : any;
+  lastSign : any;
+  plantys : any;
   constructor(private AFauth : AngularFireAuth, private AFD : AngularFireDatabase) {
     AFauth.authState.subscribe(user=>{
       this.uid = user['_delegate']['uid'];
+      this.email = user['_delegate']['email'];
+      this.creationTime = user['_delegate']['metadata']['creationTime'];
+      this.lastSign = user['_delegate']['metadata']['lastSignInTime'];
+      this.AFD.database.ref('/Users/' + this.uid).once('value', (snapshot)=> {
+        this.plantys = snapshot.val();
+      });
     })
   }
 
