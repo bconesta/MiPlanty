@@ -39,7 +39,7 @@ export class PlantyModalPage implements OnInit {
     this.ruta = this.obj[1].tipo === "Cactus" ? "../../assets/imgs/phomeCACTUS.png" : "../../assets/imgs/phomeCENTRAL.png";
     this.hum = this.leng.language[this.leng.value].PlantyModalPage.label2 + this.obj[1].hum.toFixed(1) + "%";
     this.luz = this.leng.language[this.leng.value].PlantyModalPage.label3 + this.obj[1].luz.toFixed(1) + "%";
-    this.temp = this.leng.language[this.leng.value].PlantyModalPage.label4 + this.obj[1].temp.toFixed(0) + "°C";
+    this.temp = this.leng.language[this.leng.value].PlantyModalPage.label4 + (this.obj[1].temp*3.3).toFixed(0) + "°C";
   }
 
 }
