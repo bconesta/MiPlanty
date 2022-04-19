@@ -220,7 +220,7 @@ void loop() {
       temp = (analogRead(sensortemp)/4095.00)*100.00;
 
       //LECTURA HUMEDAD
-      hum = (analogRead(sensorhum)/4095.00)*100.00;
+      hum = 100-(analogRead(sensorhum)/4095.00)*100.00;
 
       //LECTURA LUZ
       luz = (analogRead(sensorluz)/4095.00)*100.00;
